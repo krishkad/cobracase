@@ -1,7 +1,7 @@
 import React from 'react'
 import MaxWidthWrapper from './max-width-wrapper'
 import Image from 'next/image'
-import { Button, buttonVariants } from '../ui/button'
+import { buttonVariants } from '../ui/button'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
