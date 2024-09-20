@@ -1,6 +1,7 @@
 import React from 'react'
 import MaxWidthWrapper from './max-width-wrapper'
 import { Check, Star } from 'lucide-react'
+import Image from 'next/image'
 
 const Hero = () => {
     return (
@@ -40,28 +41,38 @@ const Hero = () => {
 
                         <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
                             <div className="flex -space-x-4">
-                                <img
+                                <Image
                                     className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
+                                    width={40}
+                                    height={40}
                                     src='/users/user-1.png'
                                     alt='user image'
                                 />
-                                <img
+                                <Image
                                     className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
+                                    width={40}
+                                    height={40}
                                     src='/users/user-2.png'
                                     alt='user image'
                                 />
-                                <img
+                                <Image
                                     className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
+                                    width={40}
+                                    height={40}
                                     src='/users/user-3.png'
                                     alt='user image'
                                 />
-                                <img
+                                <Image
                                     className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
+                                    width={40}
+                                    height={40}
                                     src='/users/user-4.jpg'
                                     alt='user image'
                                 />
-                                <img
+                                <Image
                                     className='inline-block object-cover h-10 w-10 rounded-full ring-2 ring-slate-100'
+                                    width={40}
+                                    height={40}
                                     src='/users/user-5.jpg'
                                     alt='user image'
                                 />
