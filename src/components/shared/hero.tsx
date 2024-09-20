@@ -6,7 +6,7 @@ import Image from 'next/image'
 const Hero = () => {
     return (
         <div className='w-full bg-slate-50'>
-            <MaxWidthWrapper className="w-full lg:grid lg:grid-cols-3 py-10">
+            <MaxWidthWrapper className="w-full lg:grid lg:grid-cols-3 pb-20 pt-10">
                 <section className="col-span-2 max-lg:pb-4">
                     <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
                         <h1 className="relative w-fit tracking-tight text-balance mt-4 sm:mt-12  font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
@@ -16,7 +16,7 @@ const Hero = () => {
                             </span>{" "}
                             Phone Case
                         </h1>
-                        <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap font-normal">
+                        <p className="mt-4 sm:mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap font-normal">
                             Capture your favorate memories with your own, {" "}
                             <span className="font-semibold">one-of-one</span> phone case.
                             CobraCase allows you to protect your memories, not just your  phone.
@@ -93,7 +93,7 @@ const Hero = () => {
                         </div>
                     </div>
                 </section>
-                <section className="col-span-full lg:col-span-1 w-full flex justify-center px-8 mt-8 md:mt-14 h-fit">
+                <section className="col-span-full lg:col-span-1 w-full flex justify-center px-8 mt-8 md:mt-24 h-fit">
                     <div className='relative md:max-w-xl'>
 
                         <Image
@@ -103,7 +103,7 @@ const Hero = () => {
                             src="/your-image.png"
                             alt="your image"
                             unoptimized={true}
-                            className="absolute w-40 lg:w-52 left-56 -top-20 select-none hidden md:block lg:hidden xl:block pointer-events-none"
+                            className="absolute w-40 lg:w-52 left-56 -top-20 select-none hidden md:block lg:hidden 2xl:block pointer-events-none"
                         />
 
                         <Image
@@ -116,12 +116,12 @@ const Hero = () => {
                             className="absolute -left-6 -bottom-6 select-none w-20 pointer-events-none"
                         />
 
-                        <div className="relative pointer-events-none z-50 overflow-hidden w-64">
+                        <div className="relative pointer-events-none z-40 overflow-hidden w-64">
                             <Image
                                 width={0}
                                 height={0}
                                 src={'/phone-template-white-edges.png'}
-                                className='pointer-events-none z-50 select-none min-w-full min-h-full'
+                                className='pointer-events-none z-40 select-none min-w-full min-h-full'
                                 quality={90}
                                 priority
                                 placeholder='empty'
