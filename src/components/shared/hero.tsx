@@ -93,7 +93,7 @@ const Hero = () => {
                         </div>
                     </div>
                 </section>
-                <section className="col-span-full lg:col-span-1 w-full flex justify-center px-8 mt-8 md:mt-24 h-fit">
+                <section className="col-span-full lg:col-span-1 w-full flex justify-center px-8 mt-8 md:mt-24 lg:mt-12 h-fit">
                     <div className='relative md:max-w-xl'>
 
                         <Image
