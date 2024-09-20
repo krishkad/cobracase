@@ -16,13 +16,13 @@ const Hero = () => {
                             </span>{" "}
                             Phone Case
                         </h1>
-                        <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap font-normal">
+                        <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap font-medium">
                             Capture your favorate memories with your own, {" "}
-                            <span className="font-semibold">one-of-one</span> phone case.
+                            <span className="font-bold">one-of-one</span> phone case.
                             CobraCase allows you to protect your memories, not just your  phone.
                         </p>
 
-                        <ul className='mt-8 text-left space-y-2 font-medium flex flex-col items-center sm:items-start'>
+                        <ul className='mt-8 text-left space-y-2 font-bold flex flex-col items-center sm:items-start'>
                             <div className="space-y-2">
                                 <li className='flex gap-1.5 items-center text-left'>
                                     <Check className='w-5 h-5 shrink-0 text-green-600' />
@@ -86,8 +86,8 @@ const Hero = () => {
                                     <Star className='w-4 h-4 shrink-0 text-green-600 fill-green-600' />
                                     <Star className='w-4 h-4 shrink-0 text-green-600 fill-green-600' />
                                 </div>
-                                <p>
-                                    <span className='font-semibold'>1,250</span> happy customers
+                                <p className='font-semibold'>
+                                    <span className='font-bold'>1,250</span> happy customers
                                 </p>
                             </div>
                         </div>
