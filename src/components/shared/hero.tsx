@@ -6,10 +6,10 @@ import Image from 'next/image'
 const Hero = () => {
     return (
         <div className='w-full bg-slate-50'>
-            <MaxWidthWrapper className="w-full lg:grid lg:grid-cols-3 py-12 lg:py-20 xl:py-24">
+            <MaxWidthWrapper className="w-full lg:grid lg:grid-cols-3 py-10">
                 <section className="col-span-2 max-lg:pb-4">
                     <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
-                        <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
+                        <h1 className="relative w-fit tracking-tight text-balance mt-4 sm:mt-12  font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
                             Your Image on a{' '}
                             <span className='px-2 bg-green-600 text-white'>
                                 Custom
@@ -93,7 +93,7 @@ const Hero = () => {
                         </div>
                     </div>
                 </section>
-                <section className="col-span-full lg:col-span-1 w-full flex justify-center px-8 mt-8 md:mt-20 h-fit">
+                <section className="col-span-full lg:col-span-1 w-full flex justify-center px-8 mt-8 md:mt-14 h-fit">
                     <div className='relative md:max-w-xl'>
 
                         <Image
