@@ -132,7 +132,7 @@ const Hero = () => {
                                 <Image
                                     width={0}
                                     height={0}
-                                    src={'/horse.jpg'}
+                                    src={'/testimonials/1.jpg'}
                                     className='object-cover min-w-full min-h-full'
                                     quality={90}
                                     priority
