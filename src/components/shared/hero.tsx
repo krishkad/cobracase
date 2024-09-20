@@ -93,7 +93,7 @@ const Hero = () => {
                         </div>
                     </div>
                 </section>
-                <section className="col-span-full lg:col-span-1 w-full flex justify-center px-8 mt-8 h-fit">
+                <section className="col-span-full lg:col-span-1 w-full flex justify-center px-8 mt-8 md:mt-20 h-fit">
                     <div className='relative md:max-w-xl'>
 
                         <Image
@@ -103,7 +103,7 @@ const Hero = () => {
                             src="/your-image.png"
                             alt="your image"
                             unoptimized={true}
-                            className="absolute w-40 lg:w-52 left-56 -top-20 select-none hidden md:block lg:hidden xl:block"
+                            className="absolute w-40 lg:w-52 left-56 -top-20 select-none hidden md:block lg:hidden xl:block pointer-events-none"
                         />
 
                         <Image
@@ -113,7 +113,7 @@ const Hero = () => {
                             quality={100}
                             src="/line.png"
                             alt="line"
-                            className="absolute -left-6 -bottom-6 select-none w-20"
+                            className="absolute -left-6 -bottom-6 select-none w-20 pointer-events-none"
                         />
 
                         <div className="relative pointer-events-none z-50 overflow-hidden w-64">
