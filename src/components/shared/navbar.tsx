@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { buttonVariants } from '../ui/button'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { ArrowRight } from 'lucide-react'
 
 const Navbar = () => {
     return (
@@ -17,6 +18,10 @@ const Navbar = () => {
                     </Link>
                     <Link href={'/'} className={cn(buttonVariants({ variant: "ghost" }))}>
                         Sign in
+                    </Link>
+                    <Link href={'/'} className={cn(buttonVariants({ variant: 'default' }), "hidden sm:flex items-center justify-center gap-2")}>
+                        Create case
+                        <ArrowRight className='w-5 h-4 shrink-0' />
                     </Link>
                 </div>
             </MaxWidthWrapper >
