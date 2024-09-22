@@ -22,7 +22,7 @@ const Hero = () => {
                             CobraCase allows you to protect your memories, not just your  phone.
                         </p>
 
-                        <ul className='mt-8 text-left space-y-2 font-semibold flex flex-col items-center sm:items-start'>
+                        <ul className='mt-4 sm:mt-8 text-left space-y-2 font-semibold flex flex-col items-center sm:items-start'>
                             <div className="space-y-2">
                                 <li className='flex gap-1.5 items-center text-left'>
                                     <Check className='w-5 h-5 shrink-0 text-green-600' />
@@ -39,7 +39,7 @@ const Hero = () => {
                             </div>
                         </ul>
 
-                        <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                        <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
                             <div className="flex -space-x-4">
                                 <Image
                                     className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'

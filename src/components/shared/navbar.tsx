@@ -11,11 +11,11 @@ const Navbar = () => {
             <MaxWidthWrapper className='h-16 flex justify-between items-center'>
                 <Image src={'/snake-1.png'} width={0} height={0} className='w-9 h-9 object-contain' unoptimized={true} alt='cobra case logo' />
 
-                <div className="flex gap-4 items-center justify-center">
+                <div className="flex gap-2 sm:gap-4 items-center justify-center">
                     <Link href={'/'} className={cn(buttonVariants({ variant: "ghost" }))}>
                         Log in
                     </Link>
-                    <Link href={'/'} className={cn(buttonVariants({ variant: "default" }))}>
+                    <Link href={'/'} className={cn(buttonVariants({ variant: "ghost" }))}>
                         Sign in
                     </Link>
                 </div>
