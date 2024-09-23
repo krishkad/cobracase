@@ -24,7 +24,7 @@ export default function Home() {
                 <Star className="w-4 h-4 text-green-600 fill-green-600" />
                 <Star className="w-4 h-4 text-green-600 fill-green-600" />
               </div>
-              <p className="text-lg font-normal">"I recently ordered a custom photo printed case for my iPhone, and I really happy with how it turned out! The process of uploading my picture was super easy, and the final product came out exactly as I hoped. The print is clear, vibrant, and fits perfectly on the case without any awkward cropping or blurring. The case itself feels sturdy and protective, while still showcasing my personal photo beautifully. Overall, its a great way to personalize my phone, and I definitely recommend it to anyone looking to add a special touch to their device!"</p>
+              <p className="text-lg font-normal">&ldquo;I recently ordered a custom photo printed case for my iPhone, and I really happy with how it turned out! The process of uploading my picture was super easy, and the final product came out exactly as I hoped. The print is clear, vibrant, and fits perfectly on the case without any awkward cropping or blurring. The case itself feels sturdy and protective, while still showcasing my personal photo beautifully. Overall, its a great way to personalize my phone, and I definitely recommend it to anyone looking to add a special touch to their device!&quot;</p>
               <div className="flex items-center gap-3">
                 <Image src={'/users/user-1.png'} width={40} height={40} className="rounded-full object-cover shrink-0" alt="user" />
                 <div className="">
@@ -44,7 +44,7 @@ export default function Home() {
                 <Star className="w-4 h-4 text-green-600 fill-green-600" />
                 <Star className="w-4 h-4 text-green-600 fill-green-600" />
               </div>
-              <p className="text-lg font-normal">"I absolutely love my custom photo iPhone case! The whole process was super simple  I just uploaded a picture of my dog, and the case arrived looking amazing. The colors are so vibrant, and the print quality is way better than I expected. Its also a sturdy, well-made case that protects my phone while still showing off the design. I have already had a few people ask where I got it, and I will definitely be recommending it to my friends!"</p>
+              <p className="text-lg font-normal">&quot;I absolutely love my custom photo iPhone case! The whole process was super simple  I just uploaded a picture of my dog, and the case arrived looking amazing. The colors are so vibrant, and the print quality is way better than I expected. Its also a sturdy, well-made case that protects my phone while still showing off the design. I have already had a few people ask where I got it, and I will definitely be recommending it to my friends!&quot;</p>
               <div className="flex items-center gap-3">
                 <Image src={'/users/user-4.jpg'} width={40} height={40} className="rounded-full object-cover shrink-0" alt="user" />
                 <div className="">
@@ -64,7 +64,7 @@ export default function Home() {
                 <Star className="w-4 h-4 text-green-600 fill-green-600" />
                 <Star className="w-4 h-4 text-green-600 fill-green-600" />
               </div>
-              <p className="text-lg font-normal">"This custom iPhone case is exactly what I was looking for! I wanted something personal, so I uploaded a photo of my family, and it turned out perfect. The picture is clear, and the colors are spot on. The case fits my phone perfectly and feels really durable. I love that its not just a pretty design but also provides solid protection. Its a great way to carry a special memory with me everywhere, and I am super happy with my purchase!"</p>
+              <p className="text-lg font-normal">&quot;This custom iPhone case is exactly what I was looking for! I wanted something personal, so I uploaded a photo of my family, and it turned out perfect. The picture is clear, and the colors are spot on. The case fits my phone perfectly and feels really durable. I love that its not just a pretty design but also provides solid protection. Its a great way to carry a special memory with me everywhere, and I am super happy with my purchase!&quot;</p>
               <div className="flex items-center gap-3">
                 <Image src={'/users/user-3.png'} width={40} height={40} className="rounded-full object-cover shrink-0" alt="user" />
                 <div className="">
