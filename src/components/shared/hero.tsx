@@ -9,7 +9,7 @@ const Hero = () => {
             <MaxWidthWrapper className="w-full lg:grid lg:grid-cols-3 pb-20 pt-10">
                 <section className="col-span-2 max-lg:pb-4">
                     <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
-                        <h1 className="relative w-fit tracking-tight text-balance mt-4 sm:mt-12  font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
+                        <h1 className="relative w-fit tracking-tight text-balance mt-4 sm:mt-12 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
                             Your Image on a{' '}
                             <span className='px-2 bg-green-600 text-white'>
                                 Custom
