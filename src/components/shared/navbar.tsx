@@ -21,7 +21,7 @@ const Navbar = () => {
                     </Link>
                     <Link href={'/'} className={cn(buttonVariants({ variant: 'default' }), "flex items-center justify-center gap-2")}>
                         Create case
-                        <ArrowRight className='w-5 h-4 shrink-0 hidden sm:block' />
+                        <ArrowRight className='w-5 h-4 shrink-0' />
                     </Link>
                 </div>
             </MaxWidthWrapper >
