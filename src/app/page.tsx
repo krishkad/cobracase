@@ -51,7 +51,7 @@ export default function Home() {
                 <Star className="w-4 h-4 text-green-600 fill-green-600" />
                 <Star className="w-4 h-4 text-green-600 fill-green-600" />
               </div>
-              <p className="text-lg font-normal ">&quot;I recently bought a custom phone case with a photo printed on it, and I am really happy with how it turned out! The ordering process was simple, and uploading my image was quick and straightforward. The print quality is fantastic—vivid, sharp, and exactly as I had hoped. The case itself is sturdy and offers great protection for my phone, while still showing off my personal photo beautifully. It fits perfectly without any distortion or cropping of the image. Overall, it's a perfect way to add a personal touch to my phone, and I would highly recommend it to others!&quot;</p>
+              <p className="text-lg font-normal">&quot;I recently bought a custom phone case with a photo printed on it, and I am really happy with how it turned out! The ordering process was simple, and uploading my image was quick and straightforward. The print quality is fantastic—vivid, sharp, and exactly as I had hoped. The case itself is sturdy and offers great protection for my phone, while still showing off my personal photo beautifully. It fits perfectly without any distortion or cropping of the image. Overall, it's a perfect way to add a personal touch to my phone, and I would highly recommend it to others!&quot;</p>
               <div className="flex items-center gap-3">
                 <Image src={'/users/user-4.jpg'} width={40} height={40} className="rounded-full object-cover shrink-0" alt="user" />
                 <div className="">
