@@ -10,20 +10,20 @@ const Hero = () => {
             <MaxWidthWrapper className="w-full lg:grid lg:grid-cols-3 pb-20 max-md:pt-10 max-lg:pt-4 xl:pt-10">
                 <section className="col-span-2 max-lg:pb-4">
                     <div className="relative mx-auto text-center lg:text-left flex flex-col items-center lg:items-start">
-                        <h1 className="relative w-fit tracking-tight text-balance mt-4 sm:mt-12 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl xl:text-7xl">
+                        <h1 className="relative w-fit tracking-tight text-balance mt-12 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl xl:text-7xl">
                             Your Image on a{' '}
                             <span className='px-2 bg-green-600 text-white'>
                                 Custom
                             </span>{" "}
                             Phone Case
                         </h1>
-                        <p className="mt-4 sm:mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap font-normal">
+                        <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap font-normal">
                             Capture your favorate memories with your own, {" "}
                             <span className="font-semibold">one-of-one</span> phone case.
                             CobraCase allows you to protect your memories, not just your  phone.
                         </p>
 
-                        <ul className='mt-4 sm:mt-8 text-left space-y-2 font-semibold flex flex-col items-center sm:items-start'>
+                        <ul className='mt-8 text-left space-y-2 font-semibold flex flex-col items-center sm:items-start'>
                             <div className="space-y-2">
                                 <li className='flex gap-1.5 items-center text-left'>
                                     <Check className='w-5 h-5 shrink-0 text-green-600' />
@@ -40,7 +40,7 @@ const Hero = () => {
                             </div>
                         </ul>
 
-                        <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                        <div className="mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5">
                             <div className="flex -space-x-4">
                                 <Image
                                     className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'

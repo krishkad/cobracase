@@ -24,7 +24,7 @@ const Navbar = () => {
                         <ArrowRight className='w-5 h-4 shrink-0' />
                     </Link>
                 </div>
-            </MaxWidthWrapper >
+            </MaxWidthWrapper>
         </div >
     )
 }

@@ -17,8 +17,9 @@ function splitArray<T>(array: Array<T>, numParts: number) {
 }
 
 const Reviews = () => {
+  
   const PHONE = [
-    "/testimonials/1.jpg",
+    "/horse.jpg",
     "/testimonials/2.jpg",
     "/testimonials/3.jpg",
     "/testimonials/4.jpg",
