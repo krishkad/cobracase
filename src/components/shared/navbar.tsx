@@ -13,15 +13,15 @@ const Navbar = () => {
                 <Image src={'/snake-1.png'} width={0} height={0} className='w-9 h-9 object-contain' unoptimized={true} alt='cobra case logo' />
 
                 <div className="flex gap-2 sm:gap-4 items-center justify-center">
-                    <Link href={'/'} className={cn(buttonVariants({ variant: "ghost" }))}>
+                    <Link href={'/'} className={cn(buttonVariants({ variant: "ghost" }), "hidden sm:block")}>
                         Log in
                     </Link>
                     <Link href={'/'} className={cn(buttonVariants({ variant: "ghost" }))}>
                         Sign in
                     </Link>
-                    <Link href={'/'} className={cn(buttonVariants({ variant: 'default' }), "hidden sm:flex items-center justify-center gap-2")}>
+                    <Link href={'/'} className={cn(buttonVariants({ variant: 'default' }), "flex items-center justify-center gap-2")}>
                         Create case
-                        <ArrowRight className='w-5 h-4 shrink-0' />
+                        <ArrowRight className='w-5 h-4 shrink-0 hidden sm:block' />
                     </Link>
                 </div>
             </MaxWidthWrapper >
