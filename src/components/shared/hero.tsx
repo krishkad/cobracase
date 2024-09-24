@@ -2,6 +2,7 @@ import React from 'react'
 import MaxWidthWrapper from './max-width-wrapper'
 import { Check, Star } from 'lucide-react'
 import Image from 'next/image'
+import Phone from './phone'
 
 const Hero = () => {
     return (
@@ -116,7 +117,7 @@ const Hero = () => {
                             className="absolute -left-6 -bottom-6 select-none w-20 pointer-events-none"
                         />
 
-                        <div className="relative pointer-events-none z-40 overflow-hidden w-64">
+                        {/* <div className="relative pointer-events-none z-40 overflow-hidden w-64">
                             <Image
                                 width={0}
                                 height={0}
@@ -140,7 +141,8 @@ const Hero = () => {
                                     unoptimized={true}
                                 />
                             </div>
-                        </div>
+                        </div> */}
+                        <Phone SrcImg='/testimonials/1.jpg' />
                     </div>
                 </section>
             </MaxWidthWrapper>
