@@ -5,6 +5,7 @@ import { Check, Star } from "lucide-react";
 import Image from "next/image";
 import Icons from "@/components/shared/icons";
 import Reviews from "@/components/shared/reviews";
+import Phone from "@/components/shared/phone";
 
 export default function Home() {
   return (
@@ -69,6 +70,25 @@ export default function Home() {
       <div className="w-full bg-slate-50">
         <MaxWidthWrapper className="py-12 sm:py-20">
           <Reviews />
+        </MaxWidthWrapper>
+      </div>
+      <div className="w-full bg-slate-100">
+        <MaxWidthWrapper className="py-12 sm:py-20">
+          <div className="mx-auto text-center max-w-2xl">
+            <h2 className="font-bold text-balance tracking-tight !leading-tight text-5xl md:text-6xl text-gray-900">
+              Upload your photo and{" "}
+              <span className="bg-green-600 text-white px-2">get your on case</span>
+              {" "}
+              now
+            </h2>
+          </div>
+          <div className="relative w-full flex flex-col items-center justify-center lg:flex-row gap-10 mt-20">
+            
+            <Image src={'/what-people-are-buying.png'} width={0} height={0} className="absolute -left-5 top-0 w-[200px] h-max object-cover hidden xl:block" alt="raw-horse-img" unoptimized />
+            <Image src={'/example.jpg'} width={0} height={0} className="w-[380px] h-max object-cover rounded-md shadow-md shadow-gray-900" alt="raw-horse-img" unoptimized />
+            <Image src={'/arrow.png'} width={0} height={0} className="w-32 h-32 object-contain max-lg:rotate-90" unoptimized alt="arrow img" />
+            <Phone SrcImg="/example.jpg" className="h-max " />
+          </div>
         </MaxWidthWrapper>
       </div>
     </div>

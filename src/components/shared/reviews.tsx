@@ -19,7 +19,7 @@ function splitArray<T>(array: Array<T>, numParts: number) {
 const Reviews = () => {
   
   const PHONE = [
-    "/horse.jpg",
+    "/testimonials/7.jpg",
     "/testimonials/2.jpg",
     "/testimonials/3.jpg",
     "/testimonials/4.jpg",
@@ -34,7 +34,7 @@ const Reviews = () => {
   return (
 
     <div className="w-full h-[calc(70vh)] md:h-[calc(80vh)] overflow-hidden">
-      <div className="size-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="size-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <div className="size-full flex flex-col items-center gap-y-8 ">
           {column1.map((phone, i) => {
             return <Phone SrcImg={phone} key={i} />
@@ -45,7 +45,7 @@ const Reviews = () => {
             return <Phone SrcImg={phone} key={i} />
           })}
         </div>
-        <div className="size-full hidden md:flex flex-col items-center gap-y-8 ">
+        <div className="size-full hidden lg:flex flex-col items-center gap-y-8 ">
           {column3.map((phone, i) => {
             return <Phone SrcImg={phone} key={i} />
           })}
