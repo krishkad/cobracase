@@ -80,7 +80,7 @@ export default function Home() {
           <div className="mx-auto text-center max-w-2xl">
             <h2 className="font-bold text-balance tracking-tight !leading-tight text-5xl md:text-6xl text-gray-900">
               Upload your photo and{" "}
-              <span className="bg-green-600 text-white px-2">get your on case</span>
+              <span className="bg-green-600 text-white px-2">get your own case</span>
               {" "}
               now
             </h2>
