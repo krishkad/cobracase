@@ -1,11 +1,14 @@
 import React from "react";
 import Hero from "@/components/shared/hero";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
-import { Check, Star } from "lucide-react";
+import { ArrowRight, Check, Star } from "lucide-react";
 import Image from "next/image";
 import Icons from "@/components/shared/icons";
 import Reviews from "@/components/shared/reviews";
 import Phone from "@/components/shared/phone";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -83,12 +86,46 @@ export default function Home() {
             </h2>
           </div>
           <div className="relative w-full flex flex-col items-center justify-center lg:flex-row gap-10 mt-20">
-            
+
             <Image src={'/what-people-are-buying.png'} width={0} height={0} className="absolute -left-5 top-0 w-[200px] h-max object-cover hidden xl:block" alt="raw-horse-img" unoptimized />
             <Image src={'/example.jpg'} width={0} height={0} className="w-[380px] h-max object-cover rounded-md shadow-md shadow-gray-900" alt="raw-horse-img" unoptimized />
             <Image src={'/arrow.png'} width={0} height={0} className="w-32 h-32 object-contain max-lg:rotate-90" unoptimized alt="arrow img" />
             <Phone SrcImg="/example.jpg" className="h-max " />
           </div>
+
+          <ul className="mx-auto mt-12 sm:text-lg max-w-prose space-y-2 w-fit">
+            <li className="w-fit">
+              <span className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-green-600 inline shrink-0" />
+                High-quality silicone material
+              </span>
+            </li>
+            <li className="w-fit">
+              <span className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-green-600 inline shrink-0" />
+                Scratch- and fingerprint resistant coating
+              </span>
+            </li>
+            <li className="w-fit">
+              <span className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-green-600 inline shrink-0" />
+                Wireless charging compatible
+              </span>
+            </li>
+            <li className="w-fit">
+              <span className="flex items-center gap-2">
+                <Check className="w-5 h-5 text-green-600 inline shrink-0" />
+                5 year print warranty
+              </span>
+            </li>
+
+
+            <div className="flex justify-center">
+              <Link href={'/'} className={cn(buttonVariants({ size: 'lg', className: "mt-8 mx-auto" }))}>
+                Create your own case <ArrowRight className="w-4 h-4 ml-1.5" />
+              </Link>
+            </div>
+          </ul>
         </MaxWidthWrapper>
       </div>
     </div>
