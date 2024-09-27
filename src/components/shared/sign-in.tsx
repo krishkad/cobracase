@@ -60,7 +60,7 @@ const SignIn = () => {
                         <input
                             id="email"
                             type="email"
-                            className='flex h-9 w-[300px] rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
+                            className='flex h-10 w-[300px] rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
                             value={email}
                             placeholder='Enter your e-mail'
                             onChange={(e) => setEmail(e.target.value)}
@@ -72,7 +72,7 @@ const SignIn = () => {
                         <input
                             id="password"
                             type="password"
-                            className='flex h-9 w-[300px] rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
+                            className='flex h-10 w-[300px] rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
                             value={password}
                             placeholder='Enter your password'
                             onChange={(e) => setPassword(e.target.value)}
@@ -92,7 +92,7 @@ const SignIn = () => {
                         return (
                             <div key={provider.name}>
                                 <Button
-                                    className={cn('relative p-6 min-w-[300px] flex justify-center items-center border-2 rounded-full', provider.name === 'GitHub' ? "bg-black text-white hover:bg-zinc-900" : provider.name === "Google" ? "bg-white text-black hover:bg-slate-100" : "")}
+                                    className={cn('relative p-6 min-w-[300px] flex justify-center items-center border-2 rounded-full', provider.name === 'GitHub' ? "bg-black text-white hover:bg-black/75" : provider.name === "Google" ? "bg-white text-black hover:bg-slate-100" : "")}
                                     onClick={() => signIn(provider.id, { callbackUrl })}
                                 >
                                     {provider.name === 'GitHub' ? <GitHubLogoIcon className='absolute left-5 w-5 h-5' /> : provider.name === "Google" ? <FcGoogle className='absolute left-5 w-5 h-5' /> : ""}
