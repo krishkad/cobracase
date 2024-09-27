@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import { FcGoogle } from 'react-icons/fc';
-import { Input } from '@/components/ui/input';
+// import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { BuiltInProviderType } from 'next-auth/providers/index';
 // import { BuiltInProviderType } from 'next-auth/providers';
@@ -59,9 +59,10 @@ const SignIn: React.FC = () => {
                     {error && <p style={{ color: 'red' }}>{error}</p>}
                     <div className='flex flex-col gap-1'>
                         <Label htmlFor="email">Email</Label>
-                        <Input
+                        <input
                             id="email"
                             type="email"
+                            className='flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
                             value={email}
                             placeholder='Enter your e-mail'
                             onChange={(e) => setEmail(e.target.value)}
@@ -70,9 +71,10 @@ const SignIn: React.FC = () => {
                     </div>
                     <div className='flex flex-col gap-1'>
                         <Label htmlFor="password">Password</Label>
-                        <Input
+                        <input
                             id="password"
                             type="password"
+                            className='flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50'
                             value={password}
                             placeholder='Enter your password'
                             onChange={(e) => setPassword(e.target.value)}
