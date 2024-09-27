@@ -6,8 +6,8 @@ const Footer = () => {
     return (
         <footer className='bg-slate-50 h-20 relative'>
             <MaxWidthWrapper className='h-full'>
-                <div className='border-t border-gray-200' />
-                <div className='h-full flex flex-col md:flex-row md:justify-between justify-center items-center'>
+                {/* <div className='' /> */}
+                <div className='h-full flex flex-col md:flex-row md:justify-between justify-center items-center border-t border-gray-200'>
                     <div className='text-center md:text-left pb-2 md:pb-0'>
                         <p className='text-sm text-muted-foreground'>
                             &copy; {new Date().getFullYear()} All rights reserved
@@ -19,7 +19,7 @@ const Footer = () => {
                             <Link
                                 href='#'
                                 className='text-sm text-muted-foreground hover:text-gray-600'>
-                                Terms
+                                Terms 
                             </Link>
                             <Link
                                 href='#'

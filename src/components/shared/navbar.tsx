@@ -10,13 +10,15 @@ const Navbar = () => {
     return (
         <div className='w-full z-50 sticky top-0 bg-slate-50/75 backdrop-blur-md'>
             <MaxWidthWrapper className='h-16 flex justify-between items-center'>
-                <Image src={'/snake-1.png'} width={0} height={0} className='w-9 h-9 object-contain' unoptimized={true} alt='cobra case logo' />
+                <Link href={'/'}>
+                    <Image src={'/snake-1.png'} width={0} height={0} className='w-9 h-9 object-contain' unoptimized={true} alt='cobra case logo' />
+                </Link>
 
                 <div className="flex gap-2 sm:gap-4 items-center justify-center">
-                    <Link href={'/'} className={cn(buttonVariants({ variant: "ghost" }), "hidden sm:block")}>
+                    {/* <Link href={'/api/auth/login'} className={cn(buttonVariants({ variant: "ghost" }), "hidden sm:block")}>
                         Log in
-                    </Link>
-                    <Link href={'/'} className={cn(buttonVariants({ variant: "ghost" }))}>
+                    </Link> */}
+                    <Link href={'/api/auth/signin'} className={cn(buttonVariants({ variant: "ghost" }))}>
                         Sign in
                     </Link>
                     <Link href={'/'} className={cn(buttonVariants({ variant: 'default' }), "flex items-center justify-center gap-2")}>
