@@ -81,7 +81,11 @@ const SignIn = () => {
                     </div>
                     <Button className='p-6 min-w-[300px] rounded-full mt-4' type="submit">Sign In with Email</Button>
                 </form>
-                <div className="w-full border-t border-gray-300 my-5" />
+                <div className="w-full flex items-center justify-between my-5">
+                    <div className="w-[40%] border border-gray-200" />
+                    <span className="text-lg font-medium text-primary">Or</span>
+                    <div className="w-[40%] border border-gray-200" />
+                </div>
                 <div className='flex flex-col gap-4'>
                     {providers && Object.values(providers).map((provider) => {
                         if (provider.id === 'credentials') return null;
