@@ -1,6 +1,6 @@
 "use client"
 import { getProviders, signIn } from 'next-auth/react';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { ClientSafeProvider, LiteralUnion } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
