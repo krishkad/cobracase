@@ -83,7 +83,7 @@ const SignIn = () => {
                 </form>
                 <div className="w-full flex items-center justify-between my-5">
                     <div className="w-[40%] border border-gray-200" />
-                    <span className="text-lg font-medium text-primary">Or</span>
+                    <span className="text-lg font-medium text-primary">or</span>
                     <div className="w-[40%] border border-gray-200" />
                 </div>
                 <div className='flex flex-col gap-4'>
