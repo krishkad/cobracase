@@ -12,10 +12,10 @@ import { BuiltInProviderType } from 'next-auth/providers/index';
 // import { BuiltInProviderType } from 'next-auth/providers';
 
 interface SignInProps {
-    providers: Record<LiteralUnion<BuiltInProviderType , string>, ClientSafeProvider> | null;
+    providers: Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null;
 }
 
-const SignIn: React.FC = () => {
+const SignInPage = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string>('');
@@ -105,4 +105,4 @@ const SignIn: React.FC = () => {
     );
 };
 
-export default SignIn;
+export default SignInPage;
