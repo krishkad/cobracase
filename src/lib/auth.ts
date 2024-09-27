@@ -1,5 +1,4 @@
 import { NextAuthOptions } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github"
 import GoogleProvider from 'next-auth/providers/google';
 

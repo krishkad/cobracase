@@ -1,5 +1,4 @@
 'use client';
-
 import { getProviders, signIn } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { ClientSafeProvider, LiteralUnion } from 'next-auth/react';
@@ -10,9 +9,11 @@ import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import { FcGoogle } from 'react-icons/fc';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { BuiltInProviderType } from 'next-auth/providers/index';
+// import { BuiltInProviderType } from 'next-auth/providers';
 
 interface SignInProps {
-    providers: Record<LiteralUnion<any, string>, ClientSafeProvider> | null;
+    providers: Record<LiteralUnion<BuiltInProviderType , string>, ClientSafeProvider> | null;
 }
 
 const SignIn: React.FC = () => {
