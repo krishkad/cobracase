@@ -1,27 +1,17 @@
-'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import MaxWidthWrapper from './max-width-wrapper'
 import Image from 'next/image'
-import { Button, buttonVariants } from '../ui/button'
+import { buttonVariants } from '../ui/button'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
-import { usePathname, useRouter } from 'next/navigation'
-import { useSession } from 'next-auth/react'
 import { cn } from '@/lib/utils'
+import { getServerSession } from 'next-auth'
+import { options } from '@/lib/auth'
 
-const Navbar = () => {
-    const pathname = usePathname()
-    const router = useRouter();
-    const session = useSession();
-    const [show, setShow] = useState(false);
+const Navbar = async ({ type }: { type: "auth" | "root" }) => {
+    const session = await getServerSession(options);
+    console.log(session)
 
-    useEffect(() => {
-        if (pathname.includes('auth')) {
-            setShow(true)
-        } else {
-            setShow(false);
-        }
-    }, [pathname])
 
     return (
         <div className='w-full z-50 sticky top-0 bg-slate-50/75 backdrop-blur-md'>
@@ -30,9 +20,9 @@ const Navbar = () => {
                     <Image src={'/snake-1.png'} width={0} height={0} className='w-9 h-9 object-contain' unoptimized={true} alt='cobra case logo' />
                 </Link>
 
-                {!show ?
+                {type === "root" ?
                     <div className="flex gap-2 sm:gap-4 items-center justify-center">
-                        {!session.data?.user ?
+                        {!session ?
                             <Link href={'/api/auth/signin'} className={cn(buttonVariants({ variant: "ghost" }))}>
                                 Sign in
                             </Link>
@@ -48,10 +38,10 @@ const Navbar = () => {
                         </Link>
                     </div>
                     :
-                    <Button variant={'outline'} onClick={() => router.push('/')} className={"flex items-center justify-center gap-2"} >
+                    <Link href={'/'} className={cn(buttonVariants({ variant: "ghost", className: "flex items-center justify-center gap-2" }))} >
                         <ArrowLeft className='w-4 h-4' />
                         Exit
-                    </Button>
+                    </Link>
                 }
             </MaxWidthWrapper>
         </div >
