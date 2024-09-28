@@ -1,6 +1,6 @@
-import { cn } from '@/lib/utils'
-import Image from 'next/image'
 import React from 'react'
+import Image from 'next/image'
+import { cn } from '@/lib/utils'
 
 const Phone = ({ SrcImg, className }: { SrcImg: string, className?: string }) => {
     return (
