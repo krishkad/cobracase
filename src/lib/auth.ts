@@ -1,7 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import GitHubProvider from "next-auth/providers/github"
 import GoogleProvider from 'next-auth/providers/google';
-import CredentialsProvider from 'next-auth/providers/credentials';
+// import CredentialsProvider from 'next-auth/providers/credentials';
 
 export const options: NextAuthOptions = {
     providers: [
@@ -25,17 +25,17 @@ export const options: NextAuthOptions = {
             clientId: process.env.GOOGLE_CLIENT_ID! as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET! as string,
         }),
-        CredentialsProvider({
-            name: "Email and Password",
-            credentials: {
-                email: { label: 'Email', type: 'email', placeholder: 'your-email@example.com' },
-                password: { label: 'Password', type: 'password' },
-                name: { label: 'Name', type: 'text' },
-            },
-            async authorize(credentials, req) {
-                return null
-            },
-        })
+        // CredentialsProvider({
+        //     name: "Email and Password",
+        //     credentials: {
+        //         email: { label: 'Email', type: 'email', placeholder: 'your-email@example.com' },
+        //         password: { label: 'Password', type: 'password' },
+        //         name: { label: 'Name', type: 'text' },
+        //     },
+        //     async authorize(credentials, req) {
+        //         return null
+        //     },
+        // })
     ],
     session: {
         strategy: "jwt"
