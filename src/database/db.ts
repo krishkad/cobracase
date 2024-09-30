@@ -1,4 +1,3 @@
-// @ts-ignore
 import mongoose, { Mongoose } from 'mongoose';
 
 const MONGODB_URL = process.env.MONGODB_URL;
@@ -8,30 +7,27 @@ interface MongooseConnection {
     promise: Promise<Mongoose> | null;
 }
 
+// Create a variable to hold the cached connection
+let cached: MongooseConnection = {
+    conn: null,
+    promise: null,
+};
 
+export const ConnectToDatabase = async (): Promise<Mongoose> => {
+    if (cached.conn) return cached.conn;
 
-let catched: MongooseConnection = (global as any).mongoose;
+    if (!MONGODB_URL) throw new Error("Missing MONGODB_URL");
 
-
-if (!catched) {
-    catched = (global as any).mongoose = {
-        conn: null, promise: null
+    // Create a new connection promise if it doesn't exist
+    if (!cached.promise) {
+        cached.promise = mongoose.connect(MONGODB_URL, {
+            dbName: "HotelBooking", // Change this to your actual database name
+            bufferCommands: false,
+            // No need for useNewUrlParser and useUnifiedTopology
+        });
     }
-}
 
-export const ConnectToDatabase = async () => {
-    if (catched.conn) return catched.conn;
-    if (!MONGODB_URL) throw new Error("MIssing MONGO_DB_URL");
-
-    catched.promise = catched.promise || mongoose.connect(MONGODB_URL
-        , {
-            dbName: "HotelBooking",
-            bufferCommands: false
-        }
-    );
-
-
-    catched.conn = await catched.promise;
-
-    return catched.conn;
-}
+    // Wait for the promise to resolve
+    cached.conn = await cached.promise;
+    return cached.conn;
+};
