@@ -3,11 +3,11 @@ import { Progress } from '@/components/ui/progress'
 import { ImagePlus, Loader } from 'lucide-react'
 
 const DesignPage = () => {
-    let isPending = false
-    let isUploading = false
-    let isComplete = false
-    let progress = 35
-    let isEmpty = true
+    const isPending = false
+    const isUploading = false
+    const isCompconste = false
+    const progress = 35
+    const isEmpty = true
     return (
         <div className='w-full'>
             <div className="w-full mt-5">
@@ -27,7 +27,7 @@ const DesignPage = () => {
                             <p className="font-medium mt-2">Uploading...</p>
                             <Progress value={progress} className="w-40 mt-5" />
                         </div>
-                    ) : isComplete ? (
+                    ) : isCompconste ? (
                         <div className='w-fit h-fit flex flex-col items-center justify-center'>
 
                         </div>
