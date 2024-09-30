@@ -7,11 +7,10 @@ import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { getServerSession } from 'next-auth'
 import { options } from '@/lib/auth'
+import CreateCaseButton from './create-case-button'
 
 const Navbar = async ({ type }: { type: "auth" | "root" }) => {
     const session = await getServerSession(options);
-    console.log(session)
-
 
     return (
         <div className='w-full z-50 sticky top-0 bg-slate-50/75 backdrop-blur-md'>
@@ -32,10 +31,7 @@ const Navbar = async ({ type }: { type: "auth" | "root" }) => {
                             </Link>
 
                         }
-                        <Link href={'/'} className={cn(buttonVariants({ variant: 'default' }), "flex items-center justify-center gap-2")}>
-                            Create case
-                            <ArrowRight className='w-5 h-4 shrink-0' />
-                        </Link>
+                        <CreateCaseButton />
                     </div>
                     :
                     <Link href={'/'} className={cn(buttonVariants({ variant: "ghost", className: "flex items-center justify-center gap-2" }))} >

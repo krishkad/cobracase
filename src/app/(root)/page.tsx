@@ -121,7 +121,7 @@ export default function Home() {
 
 
             <div className="flex justify-center">
-              <Link href={'/'} className={cn(buttonVariants({ size: 'lg', className: "mt-8 mx-auto" }))}>
+              <Link href={'/configure/upload'} className={cn(buttonVariants({ size: 'lg', className: "mt-8 mx-auto" }))}>
                 Create your own case <ArrowRight className="w-4 h-4 ml-1.5" />
               </Link>
             </div>

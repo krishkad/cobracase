@@ -18,6 +18,7 @@ const SignIn = () => {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [authType, setAuthType] = useState<"create" | "login">('login');
     const [error, setError] = useState<string>('');
     const [providers, setProviders] = useState<SignInProps['providers']>(null);
     const [createAccount, setCreateAccount] = useState<boolean>(false)
@@ -31,6 +32,7 @@ const SignIn = () => {
         };
 
         fetchProviders();
+        console.log(callbackUrl)
     }, []);
 
     const handleSignIn = async (e: React.FormEvent) => {
@@ -40,6 +42,7 @@ const SignIn = () => {
             redirect: false,
             email,
             password,
+            authType,
             callbackUrl,
         });
 
@@ -58,6 +61,7 @@ const SignIn = () => {
             name,
             email,
             password,
+            authType,
             callbackUrl,
         });
 
@@ -108,7 +112,10 @@ const SignIn = () => {
                         className="text-green-600 text-balance text-sm self-start font-normal"
                     >
                         Dont have an account ?{" "}
-                        <span className="cursor-pointer hover:underline" onClick={() => setCreateAccount(true)}>Create Account</span>
+                        <span className="cursor-pointer hover:underline" onClick={() => {
+                            setCreateAccount(true)
+                            setAuthType('create')
+                        }}>Create Account</span>
                     </p>
                 </form> : (
                     <form onSubmit={handleCreateAccount} className="signin-form flex flex-col items-center space-y-4">
@@ -159,7 +166,10 @@ const SignIn = () => {
                             className="text-green-600 text-balance text-sm self-start font-normal"
                         >
                             Already have an account ?{" "}
-                            <span className="cursor-pointer hover:underline" onClick={() => setCreateAccount(false)}>Log in</span>
+                            <span className="cursor-pointer hover:underline" onClick={() => {
+                                setCreateAccount(false)
+                                setAuthType('login')
+                            }}>Log in</span>
                         </p>
                     </form>
                 )}
