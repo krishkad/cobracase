@@ -8,7 +8,7 @@ interface MongooseConnection {
 }
 
 // Create a variable to hold the cached connection
-let cached: MongooseConnection = {
+const cached: MongooseConnection = {
     conn: null,
     promise: null,
 };
