@@ -4,14 +4,12 @@ import ProgressSteps from '@/components/shared/progress-steps';
 
 const ConfigureLayout = ({ children }: { children: ReactNode }) => {
     return (
-        <main className="w-full">
-            <MaxWidthWrapper>
-                <ProgressSteps />
-                <main className="w-full">
-                    {children}
-                </main>
-            </MaxWidthWrapper>
-        </main>
+        <MaxWidthWrapper>
+            <ProgressSteps />
+            <main className="w-full">
+                {children}
+            </main>
+        </MaxWidthWrapper>
     )
 }
 
