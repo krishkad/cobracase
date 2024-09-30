@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { Progress } from '@/components/ui/progress'
-import { ImagePlus, Loader, Loader2, MousePointerSquareDashed } from 'lucide-react'
+import { ImagePlus, Loader2, MousePointerSquareDashed } from 'lucide-react'
 import Dropzone from 'react-dropzone'
 import { cn } from '@/lib/utils'
 
