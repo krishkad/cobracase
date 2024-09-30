@@ -32,7 +32,6 @@ const SignIn = () => {
         };
 
         fetchProviders();
-        console.log(callbackUrl)
     }, []);
 
     const handleSignIn = async (e: React.FormEvent) => {

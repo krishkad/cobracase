@@ -48,7 +48,7 @@ export const options: NextAuthOptions = {
                 name: { label: 'Name', type: 'text' },
                 authType: { label: 'authType', type: 'text', required: true },
             },
-            async authorize(credentials, req) {
+            async authorize(credentials) {
                 await ConnectToDatabase();
                 if (credentials) {
                     if (credentials.authType === "login") {
