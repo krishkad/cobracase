@@ -7,28 +7,36 @@ interface MongooseConnection {
     promise: Promise<Mongoose> | null;
 }
 
-let catched: MongooseConnection = (global as any).mongoose;
-
-
-if (!catched) {
-    catched = (global as any).mongoose = {
-        conn: null, promise: null
+// Extend the NodeJS global type to include mongoose property
+declare global {
+    namespace NodeJS {
+        interface Global {
+            mongoose: MongooseConnection;
+        }
     }
 }
 
-export const ConnectToDatabase = async () => {
-    if (catched.conn) return catched.conn;
-    if (!MONGODB_URL) throw new Error("MIssing MONGO_DB_URL");
+let globalMongoose = global as typeof global & { mongoose: MongooseConnection };
 
-    catched.promise = catched.promise || mongoose.connect(MONGODB_URL
-        ,{
-            dbName: "HotelBooking",
-            bufferCommands: false
-        }
-    );
-
-
-    catched.conn = await catched.promise;
-
-    return catched.conn;
+// Check if the mongoose connection is already cached in global
+if (!globalMongoose.mongoose) {
+    globalMongoose.mongoose = {
+        conn: null,
+        promise: null
+    };
 }
+
+export const ConnectToDatabase = async (): Promise<Mongoose> => {
+    if (globalMongoose.mongoose.conn) return globalMongoose.mongoose.conn;
+    
+    if (!MONGODB_URL) throw new Error('Missing MONGODB_URL');
+    
+    globalMongoose.mongoose.promise = globalMongoose.mongoose.promise || mongoose.connect(MONGODB_URL, {
+        dbName: "HotelBooking",
+        bufferCommands: false
+    });
+    
+    globalMongoose.mongoose.conn = await globalMongoose.mongoose.promise;
+    
+    return globalMongoose.mongoose.conn;
+};

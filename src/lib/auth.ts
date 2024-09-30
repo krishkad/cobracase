@@ -15,7 +15,6 @@ export const options: NextAuthOptions = {
 
 
                 const isExistingUser = await User.findOne({ email: profile?.email });
-                console.log("üser: ", isExistingUser);
 
                 if (!isExistingUser) {
                     await User.create({
