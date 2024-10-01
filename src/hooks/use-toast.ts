@@ -32,26 +32,25 @@ function genId() {
   return count.toString()
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-// type ActionType = typeof actionTypes
+type ActionType = typeof actionTypes
 
 type Action =
   | {
-    type:  typeof actionTypes["ADD_TOAST"]
-    toast: ToasterToast
-  }
+      type: ActionType["ADD_TOAST"]
+      toast: ToasterToast
+    }
   | {
-    type:  typeof actionTypes["UPDATE_TOAST"]
-    toast: Partial<ToasterToast>
-  }
+      type: ActionType["UPDATE_TOAST"]
+      toast: Partial<ToasterToast>
+    }
   | {
-    type:  typeof actionTypes["DISMISS_TOAST"]
-    toastId?: ToasterToast["id"]
-  }
+      type: ActionType["DISMISS_TOAST"]
+      toastId?: ToasterToast["id"]
+    }
   | {
-    type:  typeof actionTypes["REMOVE_TOAST"]
-    toastId?: ToasterToast["id"]
-  }
+      type: ActionType["REMOVE_TOAST"]
+      toastId?: ToasterToast["id"]
+    }
 
 interface State {
   toasts: ToasterToast[]
@@ -109,9 +108,9 @@ export const reducer = (state: State, action: Action): State => {
         toasts: state.toasts.map((t) =>
           t.id === toastId || toastId === undefined
             ? {
-              ...t,
-              open: false,
-            }
+                ...t,
+                open: false,
+              }
             : t
         ),
       }
