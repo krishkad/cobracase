@@ -1,19 +1,48 @@
 "use client"
-import React, { useState } from 'react'
-import { Progress } from '@/components/ui/progress'
-import { ImagePlus, Loader2, MousePointerSquareDashed } from 'lucide-react'
-import Dropzone from 'react-dropzone'
-import { cn } from '@/lib/utils'
+import React, { useState, useTransition } from 'react';
+import { Progress } from '@/components/ui/progress';
+import { ImagePlus, Loader2, MousePointerSquareDashed } from 'lucide-react';
+import Dropzone, { FileRejection } from 'react-dropzone';
+import { cn } from '@/lib/utils';
+import { useUploadThing } from '@/lib/uploadthing';
+import { useRouter } from 'next/navigation';
+import { useToast } from '@/hooks/use-toast';
 
 const DesignPage = () => {
-    const isPending = false
-    const isUploading = false
-    const isCompconste = false
-    const progress = 35
+    const router = useRouter();
+    const { toast } = useToast();
+    const [isPending, startTransition] = useTransition();
+    const isCompconste = false;
+    const [progress, setProgress] = useState<number>(0);
     const [onDrag, setOnDrag] = useState<boolean>(false);
 
-    const handleDropAccept = () => { }
-    const handleDropReject = () => { }
+    const { startUpload, isUploading } = useUploadThing('imageUploader', {
+        onClientUploadComplete([data]) {
+            const configId = data.serverData.configId;
+            startTransition(() => {
+                router.push(`/configure/design?id=${configId}`);
+            });
+        },
+        onUploadProgress(p) {
+            setProgress(p);
+        },
+    });
+
+    const handleDropAccept = (acceptedFiles: File[]) => {
+        startUpload(acceptedFiles, { configId: undefined });
+        setOnDrag(false);
+    };
+
+    const handleDropReject = (rejectedFiles: FileRejection[]) => {
+        const [file] = rejectedFiles;
+        toast({
+            title: `${file.file.type} is not accpeted`,
+            description: "Please try uploading PNG, JPG, JPEG instead.",
+            variant: 'destructive'
+        });
+        setOnDrag(false);
+    };
+
     return (
         <div className='w-full'>
             <div className="w-full py-8">
@@ -46,7 +75,11 @@ const DesignPage = () => {
                                     <div className='w-fit h-fit flex flex-col items-center justify-center gap-2'>
                                         <Loader2 className='w-6 h-6 animate-spin text-green-600' />
                                         <p className="font-medium">Uploading...</p>
-                                        <Progress value={progress} className="w-40" />
+                                        <div className="w-fit flex flex-col items-end">
+                                            <p className="text-xs font-medium text-gray-400">{progress}%</p>
+                                            <Progress value={progress} className="w-40" />
+                                        </div>
+                                        {isPending && <p className="font-medium text-gray-400">Redirecting please wait...</p>}
                                     </div>
                                 ) : isCompconste ? (
                                     <div className='w-fit h-fit flex flex-col items-center justify-center gap-2'>
