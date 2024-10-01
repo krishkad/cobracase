@@ -8,17 +8,20 @@ import React from 'react'
 const STEPS = [
     {
         title: "Step - 1: Upload Image",
-        url: "/upload"
+        url: "/upload",
+        description: "Choose and upload your preferred image."
     },
     {
         title: "Step - 2: Design your case",
-        url: "/design"
+        url: "/design",
+        description: "Customize your case with creative designs."
     },
     {
         title: "Step - 3: Preview case",
-        url: "/preview"
-    },
-]
+        url: "/preview",
+        description: "View the final design before purchase."
+    }
+];
 
 const ProgressSteps = () => {
     const pathname = usePathname();
@@ -40,8 +43,8 @@ const ProgressSteps = () => {
 
                     <Image src={imgUrl} width={30} height={30} className='object-contain ml-3  shrink-0 ' alt='snake-1' />
                     <div className="flex-1 flex flex-col">
-                        <p className="text-base font-bold">Step - 1</p>
-                        <span className="font-normal text-sm">Upload image</span>
+                        <p className="text-base font-bold">{step.title}</p>
+                        <span className="font-normal text-sm">{step.description}</span>
                     </div>
                 </div>
             })}
