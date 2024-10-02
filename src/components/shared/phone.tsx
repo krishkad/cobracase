@@ -9,7 +9,7 @@ const Phone = ({ SrcImg, className }: { SrcImg: string, className?: string }) =>
                 width={0}
                 height={0}
                 src={'/phone-template-white-edges.png'}
-                className='pointer-events-none z-40 select-none min-w-full min-h-full overflow-hidden'
+                className='pointer-events-none z-40 select-none min-w-full min-h-full overflow-hidden rounded-[36px]'
                 quality={90}
                 priority
                 placeholder='empty'
