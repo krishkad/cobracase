@@ -17,6 +17,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from '../ui/button';
 import { DashIcon } from '@radix-ui/react-icons';
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { ArrowRight, ChevronRight } from 'lucide-react';
+
 
 
 
@@ -34,19 +37,19 @@ const DesignConstructor = ({
     const [options, setOptions] = useState<{
         color: typeof COLORS[number],
         model: typeof MODEL[number],
-        material: typeof MATERIALS[number],
-        finishes: typeof FINISHES[number],
+        material: typeof MATERIALS.options[number],
+        finish: typeof FINISHES.options[number],
     }>({
         color: COLORS[0],
         model: MODEL[0],
-        material: MATERIALS[0],
-        finishes: FINISHES[0]
+        material: MATERIALS.options[0],
+        finish: FINISHES.options[0]
     });
 
 
     return (
-        <div className="w-full py-8 mb-40">
-            <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div className="w-full py-8 mb-10">
+            <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-y-5 lg:gap-x-5 ">
                 <div className="relative w-full h-[37.5rem] col-span-2 max-w-4xl border-2 border-dashed rounded-xl border-gray-400 flex items-center justify-center overflow-hidden">
                     <div className="relative w-60 pointer-events-none bg-opacity-50 aspect-[896/1831]">
                         <AspectRatio
@@ -75,144 +78,125 @@ const DesignConstructor = ({
                         </div>
                     </Rnd>
                 </div>
-                <div className="w-full">
-                    {/* <div className="w-full  mb-3 border border-gray-200" /> */}
-                    <h1 className="text-3xl tracking-tight font-bold mt-12">
-                        Personalize Your Perfect Phone
-                    </h1>
+                <div className="w-full h-[37.5rem] col-span-full lg:col-span-1">
+                    <ScrollArea className="relative w-full h-full overflow-auto">
 
-                    <div className="w-full mt-8">
-                        <div className="flex gap-2 items-center justify-center w-fit">
-                            <RadioGroup
-                                value={options.color}
-                                onChange={(val) => {
-                                    setOptions((prev) => ({
-                                        ...prev,
-                                        color: val
-                                    }))
-                                }}
-                            >
-                                <Label>Color: {options.color.label}</Label>
-                                <div className="flex justify-center items-center gap-3 5 mt-4">
-                                    {COLORS.map((color) => {
-                                        return <Radio
-                                            key={color.value}
-                                            value={color}
-                                            className={(bag) => cn("relative -m-0.5 flex cursor-pointer justify-center items-center rounded-full active:ring-0 focus:ring-0 active:ring-offset-0 focus:ring-offset-0 p-0.5 border border-transparent", {
-                                                [` border-gray-500`]: bag.checked || bag.focus
-                                            })}
-                                        >
-                                            <span className={cn("w-8 h-8 rounded-full border")} style={{
-                                                backgroundColor: color.tw
-                                            }} />
-                                        </Radio>
-                                    })}
-                                </div>
-                            </RadioGroup>
+                        {/* <div className="w-full  mb-3 border border-gray-200" /> */}
+                        <h1 className="text-3xl tracking-tight font-bold mt-12">
+                            Personalize Your Perfect Phone
+                        </h1>
+
+                        <div className="w-full mt-8">
+                            <div className="flex gap-2 items-center justify-center w-fit">
+                                <RadioGroup
+                                    value={options.color}
+                                    onChange={(val) => {
+                                        setOptions((prev) => ({
+                                            ...prev,
+                                            color: val
+                                        }))
+                                    }}
+                                >
+                                    <Label>Color: {options.color.label}</Label>
+                                    <div className="flex justify-center items-center gap-3 5 mt-4">
+                                        {COLORS.map((color) => {
+                                            return <Radio
+                                                key={color.value}
+                                                value={color}
+                                                className={(bag) => cn("relative -m-0.5 flex cursor-pointer justify-center items-center rounded-full active:ring-0 focus:ring-0 active:ring-offset-0 focus:ring-offset-0 p-0.5 border border-transparent", {
+                                                    [` border-gray-500`]: bag.checked || bag.focus
+                                                })}
+                                            >
+                                                <span className={cn("w-8 h-8 rounded-full border")} style={{
+                                                    backgroundColor: color.tw
+                                                }} />
+                                            </Radio>
+                                        })}
+                                    </div>
+                                </RadioGroup>
+                            </div>
                         </div>
-                    </div>
-                    <div className="w-full mt-8">
-                        <Label className='block'>Model</Label>
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className='w-60 mt-4 active:ring-none focus:ring-none active:ring-offset-0 focus:ring-offset-0' asChild>
-                                <Button variant={'outline'} className='w-60 flex justify-start active:ring-none focus:ring-none active:ring-offset-0 focus:ring-offset-0'>
-                                    {options.model.label}
+                        <div className="w-full mt-8">
+                            <Label className='block'>Model</Label>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger className='w-60 mt-4 active:ring-none focus:ring-none active:ring-offset-0 focus:ring-offset-0' asChild>
+                                    <Button variant={'outline'} className='w-60 flex justify-start active:ring-none focus:ring-none active:ring-offset-0 focus:ring-offset-0'>
+                                        {options.model.label}
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent className='w-60'>
+                                    <div className="w-full">
+
+                                        {MODEL.map((model) => {
+                                            return <DropdownMenuItem
+                                                key={model.value}
+                                                onClick={() => {
+                                                    setOptions((prev) => ({
+                                                        ...prev,
+                                                        model
+                                                    }))
+                                                }}
+                                                className='w-full cursor-pointer '
+                                            >
+                                                {model.label}
+                                            </DropdownMenuItem>
+                                        })}
+                                    </div>
+
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                        </div>
+                        <div className="w-full mt-8">
+                            <div className="w-full flex flex-col gap-8">
+                                {[MATERIALS, FINISHES].map(({ name, options: selectableOptions }) => {
+                                    console.log({ name, selectableOptions })
+                                    return <RadioGroup
+                                        key={name}
+                                        value={options[name]}
+                                        onChange={(val) => {
+                                            setOptions((prev) => ({
+                                                ...prev, [name]: val
+                                            }))
+                                        }}
+                                    >
+                                        <Label>
+                                            {name.slice(0, 1).toUpperCase()}{name.slice(1)}
+                                        </Label>
+                                        <div className="w-full mt-4 flex flex-col gap-4">
+                                            {selectableOptions.map((options, i) => {
+                                                return <Radio
+                                                    key={i}
+                                                    value={options}
+                                                    className={(bag) => cn("w-full p-4 border-2 border-gray-300 rounded-xl", {
+                                                        ["border-green-600"]: bag.checked || bag.focus
+                                                    })}
+                                                >
+                                                    <div className="w-full flex items-center justify-between">
+                                                        <p className="font-medium">{options.label}</p>
+                                                        <p className="font-medium">${options.price}</p>
+                                                    </div>
+                                                    {options.description && <div className="w-full mt-3">
+                                                        <p className="text-gray-600 text-xs">
+                                                            {options.description}
+                                                        </p>
+                                                    </div>}
+                                                </Radio>
+                                            })}
+                                        </div>
+                                    </RadioGroup>
+                                })}
+                            </div>
+                        </div>
+                        <div className="w-full mt-8">
+                            <div className="w-full flex justify-between items-center gap-5">
+                                <p className="text-lg font-bold">$ 214</p>
+                                <Button className='flex-1' variant={"default"}>
+                                    Continue
+                                    <ArrowRight className='w-4 h-4 shrink-0 ml-1.5 text-white inine' />
                                 </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent className='w-60'>
-                                <div className="w-full">
-
-                                    {MODEL.map((model) => {
-                                        return <DropdownMenuItem
-                                            key={model.value}
-                                            onClick={() => {
-                                                setOptions((prev) => ({
-                                                    ...prev,
-                                                    model
-                                                }))
-                                            }}
-                                            className='w-full cursor-pointer '
-                                        >
-                                            {model.label}
-                                        </DropdownMenuItem>
-                                    })}
-                                </div>
-
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    </div>
-                    <div className="w-full mt-8">
-                        <Label className='block'>Material</Label>
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className='w-60 mt-4 active:ring-none focus:ring-none active:ring-offset-0 focus:ring-offset-0' asChild>
-                                <Button variant={'outline'} className=' w-60 flex justify-start active:ring-none focus:ring-none active:ring-offset-0 focus:ring-offset-0'>
-                                    {options.material.label}
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent className='w-60'>
-                                <div className="w-full">
-
-                                    {MATERIALS.map((material) => {
-                                        return <DropdownMenuItem
-                                            key={material.value}
-                                            onClick={() => {
-                                                setOptions((prev) => ({
-                                                    ...prev,
-                                                    material
-                                                }))
-                                            }}
-                                            className=' w-full cursor-pointer flex justify-between items-center'
-                                        >
-                                            <span>
-                                                {material.label}
-                                            </span>
-                                            <span className='flex items-center justify-center gap-1'>
-                                                <DashIcon className='w-3 h-3' />
-                                                {material.price}
-                                            </span>
-                                        </DropdownMenuItem>
-                                    })}
-                                </div>
-
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    </div>
-                    <div className="w-full mt-8">
-                        <Label className='block'>Finish</Label>
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className='w-60 mt-4 active:ring-none focus:ring-none active:ring-offset-0 focus:ring-offset-0' asChild>
-                                <Button variant={'outline'} className='w-60 flex justify-start active:ring-none focus:ring-none active:ring-offset-0 focus:ring-offset-0'>
-                                    {options.finishes.label}
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent className='w-60'>
-                                <div className="w-full">
-
-                                    {FINISHES.map((finishes) => {
-                                        return <DropdownMenuItem
-                                            key={finishes.value}
-                                            onClick={() => {
-                                                setOptions((prev) => ({
-                                                    ...prev,
-                                                    finishes
-                                                }))
-                                            }}
-                                            className='w-full cursor-pointer flex justify-between items-center'
-                                        >
-                                            <span>
-                                                {finishes.label}
-                                            </span>
-                                            <span className='flex items-center justify-center gap-1'>
-                                                <DashIcon className='w-3 h-3' />
-                                                {finishes.price}
-                                            </span>
-                                        </DropdownMenuItem>
-                                    })}
-                                </div>
-
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    </div>
+                            </div>
+                        </div>
+                    </ScrollArea>
                 </div>
             </div>
         </div >

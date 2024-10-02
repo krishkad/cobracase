@@ -34,32 +34,38 @@ export const MODEL = [
     },
 ] as const;
 
-export const MATERIALS = [
-    {
+export const MATERIALS = {
+    name: 'material',
+    options: [
+      {
         label: 'Silicone',
         value: 'silicone',
         description: undefined,
-        price: "$9",
-    },
-    {
+        price: 12,
+      },
+      {
         label: 'Soft Polycarbonate',
         value: 'polycarbonate',
         description: 'Scratch-resistant coating',
-        price: "$7"
-    },
-] as const;
-
-export const FINISHES = [
-    {
+        price: 9,
+      },
+    ],
+  } as const
+  
+  export const FINISHES = {
+    name: 'finish',
+    options: [
+      {
         label: 'Smooth Finish',
         value: 'smooth',
         description: undefined,
-        price: "$.99"
-    },
-    {
+        price: 9.99,
+      },
+      {
         label: 'Textured Finish',
         value: 'textured',
         description: 'Soft grippy texture',
-        price: "$1.99",
-    },
-] as const;
+        price: 14.99,
+      },
+    ],
+  } as const
