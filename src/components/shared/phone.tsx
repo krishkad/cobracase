@@ -16,7 +16,7 @@ const Phone = ({ SrcImg, className }: { SrcImg: string, className?: string }) =>
                 unoptimized={true}
                 alt='image template'
             />
-            <div className="absolute -z-10 inset-0 overflow-hidden">
+            <div className="absolute -z-10 inset-0 overflow-hidden rounded-[36px]">
                 <Image
                     width={0}
                     height={0}
