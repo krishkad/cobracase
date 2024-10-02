@@ -50,12 +50,12 @@ const DesignConstructor = ({
                 <div className="relative w-full h-[37.5rem] col-span-2 max-w-4xl border-2 border-dashed rounded-xl border-gray-400 flex items-center justify-center overflow-hidden">
                     <div className="relative w-60 pointer-events-none bg-opacity-50 aspect-[896/1831]">
                         <AspectRatio
-                            className='relative pointer-events-none z-50 aspect-[896/1831] w-full'
+                            className='relative pointer-events-none z-40 aspect-[896/1831] w-full'
                             ratio={896 / 1831}
                         >
-                            <Image src="/phone-template-white-edges.png" fill alt="Image" className="rounded-[36px] object-cover z-50 select-none pointer-events-none" />
+                            <Image src="/phone-template-white-edges.png" fill alt="Image" className="rounded-[36px] object-cover z-40 select-none pointer-events-none" />
                         </AspectRatio>
-                        <div className='absolute z-40 inset-0 top-px bottom-px left-[2px] right-[2px] rounded-[32px] shadow-[0_0_0_99999px_rgba(229,231,235,0.6)]' />
+                        <div className='absolute z-30 inset-0 top-px bottom-px left-[2px] right-[2px] rounded-[32px] shadow-[0_0_0_99999px_rgba(229,231,235,0.6)]' />
                         <div className={cn('absolute inset-0 top-px bottom-px left-[2px] right-[2px] rounded-[32px]')} style={{
                             backgroundColor: options.color.tw
                         }} />
