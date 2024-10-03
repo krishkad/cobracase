@@ -160,7 +160,7 @@ const DesignConstructor = ({
                         </div>
                     </Rnd>
                 </div>
-                <div className="w-full h-[calc(37.5rem-48px)] col-span-full lg:col-span-1">
+                <div className="w-full h-fit lg:h-[calc(37.5rem-48px)] col-span-full lg:col-span-1">
                     <ScrollArea className="relative w-full h-full overflow-auto mt-12">
 
                         {/* <div className="w-full  mb-3 border border-gray-200" /> */}

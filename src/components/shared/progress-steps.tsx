@@ -102,7 +102,7 @@ const ProgressSteps = () => {
                             <div
                                 className={cn("absolute top-[calc(50%-2px)] left-[93%] h-1 bg-gray-300", {
                                     'bg-[#A0D683]': isCurrent,
-                                    "bg-green-500": isCompleted
+                                    "bg-primary": isCompleted
                                 })}
                                 style={{ width: lineWidth }}
                             />}
