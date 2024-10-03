@@ -41,13 +41,13 @@ export const MATERIALS = {
         label: 'Silicone',
         value: 'silicone',
         description: undefined,
-        price: 12,
+        price: 2.99,
       },
       {
         label: 'Soft Polycarbonate',
         value: 'polycarbonate',
         description: 'Scratch-resistant coating',
-        price: 9,
+        price: 0.99,
       },
     ],
   } as const
@@ -59,13 +59,13 @@ export const MATERIALS = {
         label: 'Smooth Finish',
         value: 'smooth',
         description: undefined,
-        price: 9.99,
+        price: 0.99,
       },
       {
         label: 'Textured Finish',
         value: 'textured',
         description: 'Soft grippy texture',
-        price: 14.99,
+        price: 1.99,
       },
     ],
   } as const
