@@ -64,19 +64,19 @@ const ProgressSteps = () => {
                 return <div key={i} className="w-fit justify-self-start flex flex-col items-center justify-center  gap-4">
                     {
                         step.url === '/upload' ?
-                            <Upload className={cn('w-5 h-5 text-gray-400', {
+                            <Upload className={cn('w-5 h-5 text-gray-300', {
                                 'text-primary': isCompleted,
                                 'text-[#A0D683]': isCurrent
                             })} />
                             :
                             step.url === '/design' ?
-                                <Scaling className={cn('w-5 h-5 text-gray-400', {
+                                <Scaling className={cn('w-5 h-5 text-gray-300', {
                                     'text-primary': isCompleted,
                                     'text-[#A0D683]': isCurrent
                                 })} />
                                 :
                                 step.url === '/preview' ?
-                                    <ScanEye className={cn('w-5 h-5 text-gray-400', {
+                                    <ScanEye className={cn('w-5 h-5 text-gray-300', {
                                         'text-primary': isCompleted,
                                         'text-[#A0D683]': isCurrent
                                     })} />
@@ -100,14 +100,14 @@ const ProgressSteps = () => {
                         </div>
                         {i !== 2 &&
                             <div
-                                className={cn("absolute top-[calc(50%-2px)] left-[93%] h-1 bg-[#A0D683]", {
+                                className={cn("absolute top-[calc(50%-2px)] left-[93%] h-1 bg-gray-300", {
                                     'bg-[#A0D683]': isCurrent,
                                     "bg-green-500": isCompleted
                                 })}
                                 style={{ width: lineWidth }}
                             />}
                     </div>
-                    <p className={cn("font-semibold text-gray-400 text-sm sm:text-base", {
+                    <p className={cn("font-semibold text-gray-300 text-sm sm:text-base", {
                         "text-primary": isCompleted,
                         "text-[#A0D683]": isCurrent
                     })}>{step.title}</p>
