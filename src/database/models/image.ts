@@ -1,4 +1,5 @@
 import mongoose, { model, models } from "mongoose";
+import { string } from "zod";
 
 const imageSchema = new mongoose.Schema({
     imageUrl: {
@@ -10,7 +11,16 @@ const imageSchema = new mongoose.Schema({
     },
     height: {
         type: Number
-    }
+    },
+    configured_image: {
+        type: String,
+    },
+    configured_image_width: {
+        type: Number,
+    },
+    configured_image_height: {
+        type: Number,
+    },
 }, {
     timestamps: true
 });

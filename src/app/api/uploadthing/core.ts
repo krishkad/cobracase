@@ -33,6 +33,17 @@ export const ourFileRouter = {
                 })
 
                 return { configId: createImage._id };
+            } else {
+                await ConnectToDatabase();
+
+                const updatedImage = await Image.findByIdAndUpdate(configId, {
+                    configured_image: file.url,
+                    configured_image_width: width,
+                    configured_image_height: height
+
+                });
+
+                return { configId: updatedImage._id };
             }
         }),
 } satisfies FileRouter;

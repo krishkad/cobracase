@@ -16,9 +16,11 @@ const Designpage = async ({ searchParams }: PageProps) => {
 
     await ConnectToDatabase();
 
-    const { imageUrl, width, height } = await Image.findById(id);
+    const { imageUrl, width, height, _id } = await Image.findById(id);
+    const configId = _id.toString();
+    
     return (
-        <DesignConstructor imageUrl={imageUrl} width={width} height={height} />
+        <DesignConstructor imageUrl={imageUrl} width={width} height={height} configId={configId} />
     );
 };
 

@@ -18,17 +18,21 @@ import { Rnd } from 'react-rnd';
 import { Button } from '../ui/button';
 import { Label } from '../ui/label';
 import HandleComponent from './handle-component';
+import { useUploadThing } from "@/lib/uploadthing";
+import { useRouter } from "next/navigation";
 
 
 
 const DesignConstructor = ({
     imageUrl,
     width,
-    height
+    height,
+    configId
 }: {
     imageUrl: string,
     width: number,
-    height: number
+    height: number,
+    configId: string
 }) => {
 
     const [options, setOptions] = useState<{
@@ -47,6 +51,7 @@ const DesignConstructor = ({
 
     const caseRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
     const [renderedDimension, SetRenderedDimension] = useState({
         width,
@@ -58,7 +63,14 @@ const DesignConstructor = ({
         y: 120,
     });
 
-
+    const { startUpload } = useUploadThing('imageUploader', {
+        onClientUploadComplete([data]) {
+            const { configId } = data.serverData
+            if (configId) {
+                router.push(`/configure/preview?id=${configId}`)
+            }
+        }
+    });
 
     async function saveConfiguration() {
         try {
@@ -79,7 +91,7 @@ const DesignConstructor = ({
             const actualX = renderedPosition.x - leftOffset;
             const actualY = renderedPosition.y - topOffset;
 
-            console.log({ leftOffset, topOffset, actualX, actualY })
+            // console.log({ leftOffset, topOffset, actualX, actualY, width: renderedDimension.width, height: renderedDimension.height })
 
             const canvas = document.createElement('canvas');
             canvas.width = caseWidth;
@@ -89,7 +101,9 @@ const DesignConstructor = ({
             const userImage = new Image();
             userImage.crossOrigin = 'anonymous';
             userImage.src = imageUrl
-            await new Promise((resolve) => (userImage.onload = resolve));
+            await new Promise((resolve) => (userImage.onload = resolve))
+
+            // console.log({ userImage });
 
             ctx?.drawImage(
                 userImage,
@@ -101,14 +115,27 @@ const DesignConstructor = ({
             )
 
             const base64 = canvas.toDataURL();
-            console.log({ base64 });
             const base64Data = base64.split(',')[1];
-            console.log({ base64Data });
 
+            const blob = base64ToBlob(base64Data, 'image/png');
+            // console.log({ blob })
+            const file = new File([blob], `filename.png`, { type: 'image/png' });
+            // console.log({ file: [file] })
 
+            await startUpload([file], { configId })
         } catch (error) {
-
+            console.log(error);
         }
+    }
+
+    function base64ToBlob(base64: string, mimeType: string) {
+        const byteCharacters = atob(base64)
+        const byteNumbers = new Array(byteCharacters.length)
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i)
+        }
+        const byteArray = new Uint8Array(byteNumbers)
+        return new Blob([byteArray], { type: mimeType })
     }
 
 
@@ -122,7 +149,7 @@ const DesignConstructor = ({
                             ratio={896 / 1831}
                             ref={caseRef}
                         >
-                            <NextImage src="/phone-template-white-edges.png" fill priority alt="Image" className="rounded-[36px] object-cover z-40 select-none pointer-events-none" />
+                            <NextImage src="/phone-template-white-edges.png" fill sizes="width:0,height:0" priority alt="Image" className="rounded-[36px] object-cover z-40 select-none pointer-events-none" />
                         </AspectRatio>
                         <div className='absolute z-30 inset-0 top-px bottom-px left-[2px] right-[2px] rounded-[32px] shadow-[0_0_0_99999px_rgba(229,231,235,0.6)]' />
                         <div className={cn('absolute inset-0 top-px bottom-px left-[2px] right-[2px] rounded-[32px]')} style={{
@@ -146,8 +173,8 @@ const DesignConstructor = ({
                         }}
                         onResizeStop={(_, __, ref, ____, { x, y }) => {
                             SetRenderedDimension({
-                                height: parseInt(ref.style.height.slice(0. - 2)),
-                                width: parseInt(ref.style.width.slice(0. - 2))
+                                height: parseInt(ref.style.height.slice(0, - 2)),
+                                width: parseInt(ref.style.width.slice(0, - 2))
                             })
                             setRenderedPosition({ x, y })
                         }}

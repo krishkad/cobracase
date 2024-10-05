@@ -57,9 +57,6 @@ const ProgressSteps = () => {
             {STEPS.map((step, i) => {
                 const isCurrent = pathname.includes(step.url);
                 const isCompleted = STEPS.slice(i + 1).some((step) => pathname.includes(step.url))
-                console.log(STEPS.slice(i + 1));
-                console.log(isCompleted);
-                const imgUrl = `/snake-${i + 1}.png`
 
                 return <div key={i} className="w-fit justify-self-start flex flex-col items-center justify-center  gap-4">
                     {
