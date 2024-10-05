@@ -6,6 +6,9 @@ import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcryptjs from "bcryptjs"
 
+
+
+
 export const options: NextAuthOptions = {
     providers: [
         GitHubProvider({
@@ -93,24 +96,20 @@ export const options: NextAuthOptions = {
     },
     callbacks: {
         async jwt({ token, user }) {
-            // await connectToDatabase(); // Connect to MongoDB
 
-            // Add user.id and extra fields to token if available
             if (user) {
                 token.id = user.id;
                 token.name = user.name;
-                // token.username = user.username;
             }
             return token;
         },
         async session({ session, token }) {
-            // session.id = token.id;
             session.user = {
-                // id: token.id,
-                name: token.name,
-                // username: token.username,
-                email: token.email,
-            };
+                id: token.id as string,
+                name: token.name
+            }
+
+         
             return session;
         },
     },
