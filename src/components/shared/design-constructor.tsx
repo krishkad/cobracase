@@ -1,11 +1,12 @@
 "use client"
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from '@/lib/utils';
 import { COLORS, FINISHES, MATERIALS, MODEL } from '@/validators/option-validator';
@@ -121,7 +122,7 @@ const DesignConstructor = ({
                             ratio={896 / 1831}
                             ref={caseRef}
                         >
-                            <NextImage src="/phone-template-white-edges.png" fill alt="Image" className="rounded-[36px] object-cover z-40 select-none pointer-events-none" />
+                            <NextImage src="/phone-template-white-edges.png" fill priority alt="Image" className="rounded-[36px] object-cover z-40 select-none pointer-events-none" />
                         </AspectRatio>
                         <div className='absolute z-30 inset-0 top-px bottom-px left-[2px] right-[2px] rounded-[32px] shadow-[0_0_0_99999px_rgba(229,231,235,0.6)]' />
                         <div className={cn('absolute inset-0 top-px bottom-px left-[2px] right-[2px] rounded-[32px]')} style={{
@@ -156,7 +157,7 @@ const DesignConstructor = ({
                         }}
                     >
                         <div className="relative w-full h-full">
-                            <NextImage src={imageUrl} unoptimized fill className='pointer-events-none' alt='image' />
+                            <NextImage src={imageUrl} unoptimized fill priority className='pointer-events-none' alt='image' />
                         </div>
                     </Rnd>
                 </div>
@@ -200,33 +201,29 @@ const DesignConstructor = ({
                         </div>
                         <div className="w-full mt-8">
                             <Label className='block'>Model</Label>
-                            <DropdownMenu>
-                                <DropdownMenuTrigger className='w-60 mt-4 active:ring-none focus:ring-none active:ring-offset-0 focus:ring-offset-0' asChild>
-                                    <Button variant={'outline'} className='w-60 flex justify-start active:ring-none focus:ring-none active:ring-offset-0 focus:ring-offset-0'>
-                                        {options.model.label}
-                                    </Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent className='w-60'>
-                                    <div className="w-full">
+                            <Select>
+                                <SelectTrigger className="w-full mt-4 focus:ring-0 focus:ring-offset-0 active:ring-0 active:ring-offset-0">
+                                    {options.model.label}
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {MODEL.map((model) => {
+                                        return <SelectItem
+                                            value={model.value}
+                                            key={model.value}
+                                            onClick={() => {
+                                                setOptions((prev) => ({
+                                                    ...prev,
+                                                    model
+                                                }))
+                                            }}
+                                            className='cursor-pointer '
+                                        >
+                                            {model.label}
+                                        </SelectItem>
+                                    })}
 
-                                        {MODEL.map((model) => {
-                                            return <DropdownMenuItem
-                                                key={model.value}
-                                                onClick={() => {
-                                                    setOptions((prev) => ({
-                                                        ...prev,
-                                                        model
-                                                    }))
-                                                }}
-                                                className='w-full cursor-pointer '
-                                            >
-                                                {model.label}
-                                            </DropdownMenuItem>
-                                        })}
-                                    </div>
-
-                                </DropdownMenuContent>
-                            </DropdownMenu>
+                                </SelectContent>
+                            </Select>
                         </div>
                         <div className="w-full mt-8">
                             <div className="w-full flex flex-col gap-8">
