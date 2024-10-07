@@ -1,19 +1,20 @@
 "use client"
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from '@/lib/utils';
 import { COLORS, FINISHES, MATERIALS, MODEL } from '@/validators/option-validator';
 import { Radio, RadioGroup } from '@headlessui/react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Check, ChevronsUpDown } from 'lucide-react';
 import NextImage from "next/image";
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Rnd } from 'react-rnd';
 import { Button } from '../ui/button';
 import { Label } from '../ui/label';
@@ -227,30 +228,50 @@ const DesignConstructor = ({
                             </div>
                         </div>
                         <div className="w-full mt-8">
-                            <Label className='block'>Model</Label>
-                            <Select>
-                                <SelectTrigger className="w-full mt-4 focus:ring-0 focus:ring-offset-0 active:ring-0 active:ring-offset-0">
-                                    {options.model.label}
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {MODEL.map((model) => {
-                                        return <SelectItem
-                                            value={model.value}
-                                            key={model.value}
+                            <Label className='block'>
+                                Model
+                            </Label>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button
+                                        variant='outline'
+                                        role='combobox'
+                                        className='w-full justify-between mt-4'
+                                    >
+                                        {options.model.label}
+                                        <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent className="w-full">
+                                    {MODEL.map((model) => (
+                                        <DropdownMenuItem
+                                            key={model.label}
+                                            className={cn(
+                                                'w-full flex text-sm gap-1 items-center p-1.5 cursor-default hover:bg-zinc-100',
+                                                {
+                                                    'bg-zinc-100':
+                                                        model.label === options.model.label,
+                                                }
+                                            )}
                                             onClick={() => {
                                                 setOptions((prev) => ({
                                                     ...prev,
                                                     model
                                                 }))
-                                            }}
-                                            className='cursor-pointer '
-                                        >
+                                            }}>
+                                            <Check
+                                                className={cn(
+                                                    'mr-2 h-4 w-4',
+                                                    model.label === options.model.label
+                                                        ? 'opacity-100'
+                                                        : 'opacity-0'
+                                                )}
+                                            />
                                             {model.label}
-                                        </SelectItem>
-                                    })}
-
-                                </SelectContent>
-                            </Select>
+                                        </DropdownMenuItem>
+                                    ))}
+                                </DropdownMenuContent>
+                            </DropdownMenu>
                         </div>
                         <div className="w-full mt-8">
                             <div className="w-full flex flex-col gap-8">
