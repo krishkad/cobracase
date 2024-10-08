@@ -1,8 +1,24 @@
+import Preview from '@/components/shared/preview';
+import { ConnectToDatabase } from '@/database/db';
+import Image from '@/database/models/image';
 import React from 'react'
 
-const PreviewPage = () => {
+interface SearchProps {
+  searchParams: {
+    [key: string]: string | string[] | undefined
+  }
+}
+
+const PreviewPage = async ({ searchParams }: SearchProps) => {
+
+  const { id } = searchParams;
+  await ConnectToDatabase();
+
+  const image = await Image.findById(id);
+
+  console.log({ image });
   return (
-    <div>PreviewPage</div>
+    <Preview imageUrl={image.configured_image} imageHeight={image.configured_image_height} imageWidth={image.configured_image_width} />
   )
 }
 

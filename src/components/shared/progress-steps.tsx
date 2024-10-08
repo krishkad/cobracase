@@ -53,7 +53,7 @@ const ProgressSteps = () => {
     }
 
     return (
-        <div className="w-full flex items-center justify-between mt-2 overflow-hidden" ref={containerRef}>
+        <div className="w-full flex items-center justify-between mt-5 overflow-hidden" ref={containerRef}>
             {STEPS.map((step, i) => {
                 const isCurrent = pathname.includes(step.url);
                 const isCompleted = STEPS.slice(i + 1).some((step) => pathname.includes(step.url))

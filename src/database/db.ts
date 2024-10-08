@@ -21,7 +21,7 @@ export const ConnectToDatabase = async (): Promise<Mongoose> => {
     // Create a new connection promise if it doesn't exist
     if (!cached.promise) {
         cached.promise = mongoose.connect(MONGODB_URL, {
-            dbName: "HotelBooking", // Change this to your actual database name
+            dbName: "Cobracase", // Change this to your actual database name
             bufferCommands: false,
             // No need for useNewUrlParser and useUnifiedTopology
         });
