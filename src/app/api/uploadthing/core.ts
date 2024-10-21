@@ -7,7 +7,7 @@ import Case from "@/database/models/case";
 const f = createUploadthing();
 
 export const ourFileRouter = {
-    imageUploader: f({ image: { maxFileSize: "4MB" } })
+    imageUploader: f({ image: { maxFileSize: "8MB" } })
         .input(z.object({
             configId: z.string().optional(),
             color: z.string().optional(),

@@ -21,7 +21,7 @@ const Phone = ({ SrcImg, className }: { SrcImg: string, className?: string }) =>
                     width={0}
                     height={0}
                     src={SrcImg}
-                    className='min-w-full min-h-full overflow-hidden pointer-events-none select-none'
+                    className='object-cover min-w-full min-h-full overflow-hidden pointer-events-none select-none'
                     quality={90}
                     priority
                     alt={SrcImg}

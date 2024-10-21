@@ -21,6 +21,7 @@ import { Label } from '../ui/label';
 import HandleComponent from './handle-component';
 import { useUploadThing } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
+import { isNullOrUndefined } from "util";
 
 
 
@@ -66,7 +67,9 @@ const DesignConstructor = ({
         y: 120,
     });
 
-    const { startUpload } = useUploadThing('imageUploader', {
+    const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
+
+    const { startUpload, isUploading } = useUploadThing('imageUploader', {
         onClientUploadComplete([data]) {
             const { configId } = data.serverData
             if (configId) {
@@ -83,6 +86,7 @@ const DesignConstructor = ({
 
     async function saveConfiguration() {
         try {
+            setIsButtonLoading(true);
             const {
                 left: caseLeft,
                 top: caseTop,
@@ -140,6 +144,7 @@ const DesignConstructor = ({
                 casePrice: options.casePrice
 
             });
+            setIsButtonLoading(false);
         } catch (error) {
             console.log(error);
         }
@@ -332,9 +337,16 @@ const DesignConstructor = ({
                         <div className="w-full mt-8">
                             <div className="w-full flex justify-between items-center gap-5">
                                 <p className="text-lg font-bold">${options.casePrice + options.finish.price + options.material.price}</p>
-                                <Button className='flex-1' variant={"default"} onClick={() => {
-                                    saveConfiguration()
-                                }}>
+                                <Button
+                                    className='flex-1'
+                                    variant={"default"}
+                                    onClick={() => {
+                                        saveConfiguration()
+                                    }}
+                                    isLoading={isUploading || isButtonLoading}
+                                    loadingText="Loading..."
+                                    disabled={isUploading || isButtonLoading}
+                                >
                                     Continue
                                     <ArrowRight
                                         className='w-4 h-4 shrink-0 ml-1.5 text-white inine'
