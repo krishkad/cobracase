@@ -12,6 +12,7 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
     const [showConfetti, setShowConfetti] = useState<boolean>(false)
     useEffect(() => {
 
+        window.scrollTo(0, 0)
         setShowConfetti(true);
         setTimeout(() => {
             setShowConfetti(false);
@@ -39,7 +40,7 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
 
     return (
         <>
-            <div className={cn("pointer-none select-none absolute inset-0 overflow-hidden flex justify-center z-40", !showConfetti && 'hidden')}>
+            <div className={cn("pointer-none select-none absolute inset-0 overflow-hidden flex justify-center z-[45]", !showConfetti && 'hidden')}>
                 <Confetti
                     active={showConfetti}
                     config={config}

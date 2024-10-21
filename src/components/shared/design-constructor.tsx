@@ -53,10 +53,12 @@ const DesignConstructor = ({
     const caseRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
+    const calculatedWidth = width / 4
+    const calculatedHeight = height / 4
 
     const [renderedDimension, SetRenderedDimension] = useState({
-        width,
-        height,
+        width: calculatedWidth,
+        height: calculatedHeight,
     });
 
     const [renderedPosition, setRenderedPosition] = useState({
@@ -72,6 +74,12 @@ const DesignConstructor = ({
             }
         }
     });
+
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
 
     async function saveConfiguration() {
         try {
@@ -169,8 +177,8 @@ const DesignConstructor = ({
                         default={{
                             x: 100,
                             y: 120,
-                            width: width / 4,
-                            height: height / 4,
+                            width: calculatedWidth,
+                            height: calculatedHeight,
                         }}
                         lockAspectRatio
                         className='absolute z-20 border-[3px] rounded-xl border-primary'
