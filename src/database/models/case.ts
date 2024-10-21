@@ -1,7 +1,8 @@
+import { COLORS } from "@/validators/option-validator";
 import mongoose, { model, models } from "mongoose";
 import { string } from "zod";
 
-const imageSchema = new mongoose.Schema({
+const caseSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
         required: true
@@ -21,9 +22,24 @@ const imageSchema = new mongoose.Schema({
     configured_image_height: {
         type: Number,
     },
+    color: {
+        type: String
+    },
+    model: {
+        type: String
+    },
+    material: {
+        type: String
+    },
+    finish: {
+        type: String
+    },
+    casePrice: {
+        type: Number
+    }
 }, {
     timestamps: true
 });
 
-const Image = models.images || model('images', imageSchema);
-export default Image;
+const Case = models.cases || model('cases', caseSchema);
+export default Case;

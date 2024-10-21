@@ -1,6 +1,6 @@
 import Preview from '@/components/shared/preview';
 import { ConnectToDatabase } from '@/database/db';
-import Image from '@/database/models/image';
+import Case from '@/database/models/case';
 import React from 'react'
 
 interface SearchProps {
@@ -14,11 +14,13 @@ const PreviewPage = async ({ searchParams }: SearchProps) => {
   const { id } = searchParams;
   await ConnectToDatabase();
 
-  const image = await Image.findById(id);
+  const image = await Case.findById(id);
 
-  console.log({ image });
+  console.log({ case: image });
+  if (!image.configured_image) return null
+
   return (
-    <Preview imageUrl={image.configured_image} imageHeight={image.configured_image_height} imageWidth={image.configured_image_width} />
+    <Preview imageUrl={image.configured_image} model={image.model} finish={image.finish} material={image.material} color={image.color} casePrice={image.casePrice} />
   )
 }
 

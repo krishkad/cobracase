@@ -1,7 +1,7 @@
 import React from 'react';
 import DesignConstructor from '@/components/shared/design-constructor';
-import Image from '@/database/models/image';
 import { ConnectToDatabase } from '@/database/db';
+import Case from '@/database/models/case';
 
 interface PageProps {
     searchParams: {
@@ -16,7 +16,7 @@ const Designpage = async ({ searchParams }: PageProps) => {
 
     await ConnectToDatabase();
 
-    const { imageUrl, width, height, _id } = await Image.findById(id);
+    const { imageUrl, width, height, _id } = await Case.findById(id);
     const configId = _id.toString();
     
     return (

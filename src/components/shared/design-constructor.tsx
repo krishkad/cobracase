@@ -123,7 +123,15 @@ const DesignConstructor = ({
             const file = new File([blob], `filename.png`, { type: 'image/png' });
             // console.log({ file: [file] })
 
-            await startUpload([file], { configId })
+            await startUpload([file], {
+                configId,
+                model: options.model.value,
+                color: options.color.value,
+                material: options.material.value,
+                finish: options.finish.value,
+                casePrice: options.casePrice
+
+            });
         } catch (error) {
             console.log(error);
         }

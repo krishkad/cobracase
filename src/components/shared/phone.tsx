@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 const Phone = ({ SrcImg, className }: { SrcImg: string, className?: string }) => {
     return (
-        <div className={cn("relative pointer-events-none z-40 overflow-hidden w-64", className)}>
+        <div className={cn("relative pointer-events-none select-none z-40 overflow-hidden w-64 rounded-[36px]", className)}>
             <Image
                 width={0}
                 height={0}
@@ -21,7 +21,7 @@ const Phone = ({ SrcImg, className }: { SrcImg: string, className?: string }) =>
                     width={0}
                     height={0}
                     src={SrcImg}
-                    className='object-cover min-w-full min-h-full overflow-hidden'
+                    className='object-cover min-w-full min-h-full overflow-hidden pointer-events-none select-none'
                     quality={90}
                     priority
                     alt={SrcImg}
