@@ -39,11 +39,11 @@ export interface ButtonProps
   VariantProps<typeof buttonVariants> {
   asChild?: boolean
   isLoading?: boolean
-  loadingText?: string
+  loadingChildren?: React.ReactNode
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, isLoading, loadingText, children, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, isLoading, loadingChildren, children, ...props }, ref) => {
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
@@ -51,7 +51,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {isLoading ? loadingText : children}
+        {isLoading ? loadingChildren : children}
       </Comp>
     )
   }

@@ -22,6 +22,7 @@ import HandleComponent from './handle-component';
 import { useUploadThing } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
 import { isNullOrUndefined } from "util";
+import DotLoading from "./loading";
 
 
 
@@ -70,11 +71,12 @@ const DesignConstructor = ({
     const [isButtonLoading, setIsButtonLoading] = useState<boolean>(false);
 
     const { startUpload, isUploading } = useUploadThing('imageUploader', {
-        onClientUploadComplete([data]) {
+        async onClientUploadComplete([data]) {
             const { configId } = data.serverData
             if (configId) {
-                router.push(`/configure/preview?id=${configId}`)
+                await router.push(`/configure/preview?id=${configId}`)
             }
+            setIsButtonLoading(false);
         }
     });
 
@@ -144,7 +146,7 @@ const DesignConstructor = ({
                 casePrice: options.casePrice
 
             });
-            setIsButtonLoading(false);
+
         } catch (error) {
             console.log(error);
         }
@@ -344,7 +346,13 @@ const DesignConstructor = ({
                                         saveConfiguration()
                                     }}
                                     isLoading={isUploading || isButtonLoading}
-                                    loadingText="Loading..."
+                                    loadingChildren={
+                                        <>
+                                            <span className="relative flex items-center justify-center gap-2">
+                                                <DotLoading width={70} height={70} className="" />
+                                            </span>
+                                        </>
+                                    }
                                     disabled={isUploading || isButtonLoading}
                                 >
                                     Continue

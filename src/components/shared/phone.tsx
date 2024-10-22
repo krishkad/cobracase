@@ -24,7 +24,7 @@ const Phone = ({ SrcImg, className }: { SrcImg: string, className?: string }) =>
                     className='object-cover min-w-full min-h-full overflow-hidden pointer-events-none select-none'
                     quality={90}
                     priority
-                    alt={SrcImg}
+                    alt={"your-images"}
                     unoptimized={true}
                 />
             </div>
