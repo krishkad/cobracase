@@ -23,7 +23,7 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
         angle: 90,
         spread: 360,
         startVelocity: 30,
-        elementCount: 200,
+        elementCount: 300,
         dragFriction: 0.12,
         duration: 3000,
         stagger: 3,
@@ -65,7 +65,7 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
                             <Check className='h-4 w-4 text-green-500' />
                             In stock and ready to ship
                         </div>
-                        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 border border-green-300 bg-green-50 rounded-lg p-2">
+                        <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 sm:mt-8 border border-green-300 bg-green-50 rounded-lg p-2">
 
                             <div>
                                 <p className='font-medium text-zinc-950'>Highlights</p>
@@ -84,7 +84,7 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
                                 </ol>
                             </div>
                         </div>
-                        <div className="w-full mt-8">
+                        <div className="w-full mt-12 sm:mt-8">
                             <div className="w-full flex items-center justify-between mt-0.5">
                                 <p className="font-medium text-gray-500">
                                     {modelName?.label} Case
