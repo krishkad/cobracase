@@ -6,10 +6,25 @@ import { cn } from '@/lib/utils';
 import { FINISHES, MATERIALS, MODEL } from '@/validators/option-validator';
 import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '../ui/button';
+import { useMutation } from '@tanstack/react-query';
 
-const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imageUrl: string, finish: string, material: string, model: string, color: string, casePrice: number }) => {
+const Preview = ({
+    imageUrl,
+    finish,
+    material,
+    model,
+    color,
+    casePrice
+}: {
+    imageUrl: string,
+    finish: string,
+    material: string,
+    model: string,
+    color: string,
+    casePrice: number
+}) => {
 
-    const [showConfetti, setShowConfetti] = useState<boolean>(false)
+    const [showConfetti, setShowConfetti] = useState<boolean>(false);
     useEffect(() => {
 
         window.scrollTo(0, 0)
@@ -17,7 +32,17 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
         setTimeout(() => {
             setShowConfetti(false);
         }, 3000);
-    }, [])
+    }, []);
+
+   
+
+    // const { } = useMutation({
+    //     mutationKey: ['get-checkout-session'],
+    //     onSuccess(data, variables, context) {
+            
+    //     },
+
+    // })
 
     const config = {
         angle: 90,
@@ -33,10 +58,10 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
         colors: ["#c1d426", "#f61212", "#1954f2", "#80dd13", "#dd7e08"]
     };
 
-    const modelName = MODEL.find((mod) => model === mod.value)
-    const materialInfo = MATERIALS.options.find((mat) => material === mat.value)
-    const finishInfo = FINISHES.options.find((fin) => finish === fin.value)
-    const totalPrice = casePrice + materialInfo!?.price + finishInfo!?.price
+    const modelName = MODEL.find((mod) => model === mod.value);
+    const materialInfo = MATERIALS.options.find((mat) => material === mat.value);
+    const finishInfo = FINISHES.options.find((fin) => finish === fin.value);
+    const totalPrice = casePrice + materialInfo!?.price + finishInfo!?.price;
 
     return (
         <>
@@ -62,7 +87,9 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
                             Case
                         </h1>
                         <div className='mt-3 flex items-center gap-1.5 text-base'>
-                            <Check className='h-4 w-4 text-green-500' />
+                            <Check
+                                className='h-4 w-4 text-green-500'
+                            />
                             In stock and ready to ship
                         </div>
                         <div className="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 sm:mt-8 border border-green-300 bg-green-50 rounded-lg p-2">
@@ -85,7 +112,7 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
                             </div>
                         </div>
                         <div className="w-full mt-12 sm:mt-8">
-                            <div className="w-full flex items-center justify-between mt-0.5">
+                            <div className="w-full flex items-center justify-between mt-2">
                                 <p className="font-medium text-gray-500">
                                     {modelName?.label} Case
                                 </p>
@@ -93,7 +120,7 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
                                     ${casePrice}
                                 </p>
                             </div>
-                            <div className="w-full flex items-center justify-between mt-0.5">
+                            <div className="w-full flex items-center justify-between mt-2">
                                 <p className="font-medium text-gray-500">
                                     {materialInfo?.label}
                                 </p>
@@ -101,7 +128,7 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
                                     ${materialInfo?.price}
                                 </p>
                             </div>
-                            <div className="w-full flex items-center justify-between my-0.5">
+                            <div className="w-full flex items-center justify-between my-2">
                                 <p className="font-medium text-gray-500">
                                     {finishInfo?.label}
                                 </p>
@@ -110,7 +137,7 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
                                 </p>
                             </div>
                             <hr />
-                            <div className="w-full flex items-center justify-between mt-0.5">
+                            <div className="w-full flex items-center justify-between mt-2">
                                 <p className="font-bold text-black">
                                     Total Price
                                 </p>
@@ -122,7 +149,9 @@ const Preview = ({ imageUrl, finish, material, model, color, casePrice }: { imag
                         <div className="w-full flex items-center justify-end mt-16">
                             <Button>
                                 Check out
-                                <ArrowRight className='w-4 h-4 text-white inline ml-1.5' />
+                                <ArrowRight
+                                    className='w-4 h-4 text-white inline ml-1.5'
+                                />
                             </Button>
                         </div>
                     </div>
