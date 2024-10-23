@@ -6,7 +6,6 @@ import { cn } from '@/lib/utils';
 import { FINISHES, MATERIALS, MODEL } from '@/validators/option-validator';
 import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '../ui/button';
-import { useMutation } from '@tanstack/react-query';
 
 const Preview = ({
     imageUrl,
@@ -36,13 +35,7 @@ const Preview = ({
 
    
 
-    // const { } = useMutation({
-    //     mutationKey: ['get-checkout-session'],
-    //     onSuccess(data, variables, context) {
-            
-    //     },
-
-    // })
+    
 
     const config = {
         angle: 90,
