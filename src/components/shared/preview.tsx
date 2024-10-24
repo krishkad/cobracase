@@ -10,6 +10,9 @@ import { useMutation } from '@tanstack/react-query';
 import { processOrder } from '@/actions/process-order';
 import { useRouter } from 'next/navigation';
 import DotLoading from './loading';
+import { useToast } from '@/hooks/use-toast';
+import AuthDialog from './auth-dialog';
+import { useSession } from 'next-auth/react';
 
 const Preview = ({
     imageUrl,
@@ -30,8 +33,12 @@ const Preview = ({
 }) => {
 
     const [showConfetti, setShowConfetti] = useState<boolean>(false);
-    const [processing, setProcessing] = useState<boolean>(false)
+    const [processing, setProcessing] = useState<boolean>(false);
+    const [authDialog, setAuthDialog] = useState<boolean>(false);
     const router = useRouter();
+    const { toast } = useToast();
+    const { data: session } = useSession();
+
     useEffect(() => {
         window.scrollTo(0, 0)
         setShowConfetti(true);
@@ -49,25 +56,41 @@ const Preview = ({
             if (url) {
                 setProcessing(false);
                 router.push(url);
-            }
-            else {
+            } else {
                 setProcessing(false);
-                throw new Error('payment url not found.');
+                toast({
+                    title: "Something went wrong. Try again",
+                    variant: "destructive"
+                });
             };
         },
         onError(error, variables, context) {
             setProcessing(false);
-            throw new Error("payment Error: ", error);
+            toast({
+                title: "Something went wrong. Try again",
+                description: error.message,
+                variant: "destructive"
+            });
         },
-    })
+    });
+
+
+    const handleCheckOut = () => {
+        if (session) {
+            setProcessing(true);
+            mutate({ configId });
+        } else {
+            setAuthDialog(true);
+        }
+    };
 
 
 
     const config = {
-        angle: 90,
+        angle: 180,
         spread: 360,
         startVelocity: 30,
-        elementCount: 300,
+        elementCount: 400,
         dragFriction: 0.12,
         duration: 3000,
         stagger: 3,
@@ -167,10 +190,7 @@ const Preview = ({
                         </div>
                         <div className="w-full flex items-center justify-end mt-16">
                             <Button
-                                onClick={() => {
-                                    setProcessing(true);
-                                    mutate({ configId });
-                                }}
+                                onClick={handleCheckOut}
                                 isLoading={processing}
                                 disabled={processing}
                                 loadingChildren={
@@ -190,6 +210,7 @@ const Preview = ({
                     </div>
                 </div>
             </div>
+            <AuthDialog authDialog={authDialog} setAuthDialog={setAuthDialog} id={configId} />
         </>
     )
 }

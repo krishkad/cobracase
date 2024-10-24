@@ -111,6 +111,14 @@ export const options: NextAuthOptions = {
 
             return session;
         },
+        // async redirect({ url, baseUrl }) {
+        //     // Example: Redirect the user to a custom dashboard
+        //     console.log("Redirect Callback Triggered:", { url, baseUrl });
+        //     if (url.startsWith("/preview")) {
+        //         return `${baseUrl}/${url}`;
+        //     }
+        //     return baseUrl; // Default redirect if no custom logic
+        // },
     },
     pages: {
         signIn: '/auth/sign-in'
