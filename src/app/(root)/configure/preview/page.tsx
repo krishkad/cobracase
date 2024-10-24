@@ -16,11 +16,12 @@ const PreviewPage = async ({ searchParams }: SearchProps) => {
 
   const image = await Case.findById(id);
 
-  console.log({ case: image });
   if (!image.configured_image) return null
 
+  const configId = image._id!?.toString();
+
   return (
-    <Preview imageUrl={image.configured_image} model={image.model} finish={image.finish} material={image.material} color={image.color} casePrice={image.casePrice} />
+    <Preview imageUrl={image.configured_image} model={image.model} finish={image.finish} material={image.material} color={image.color} casePrice={image.casePrice} configId={configId} />
   )
 }
 

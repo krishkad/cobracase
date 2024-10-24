@@ -96,7 +96,6 @@ export const options: NextAuthOptions = {
     },
     callbacks: {
         async jwt({ token, user }) {
-
             if (user) {
                 token.id = user.id;
                 token.name = user.name;
@@ -109,7 +108,7 @@ export const options: NextAuthOptions = {
                 name: token.name
             }
 
-         
+
             return session;
         },
     },

@@ -6,6 +6,10 @@ import { cn } from '@/lib/utils';
 import { FINISHES, MATERIALS, MODEL } from '@/validators/option-validator';
 import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '../ui/button';
+import { useMutation } from '@tanstack/react-query';
+import { processOrder } from '@/actions/process-order';
+import { useRouter } from 'next/navigation';
+import DotLoading from './loading';
 
 const Preview = ({
     imageUrl,
@@ -13,7 +17,8 @@ const Preview = ({
     material,
     model,
     color,
-    casePrice
+    casePrice,
+    configId
 }: {
     imageUrl: string,
     finish: string,
@@ -21,11 +26,13 @@ const Preview = ({
     model: string,
     color: string,
     casePrice: number
+    configId: string
 }) => {
 
     const [showConfetti, setShowConfetti] = useState<boolean>(false);
+    const [processing, setProcessing] = useState<boolean>(false)
+    const router = useRouter();
     useEffect(() => {
-
         window.scrollTo(0, 0)
         setShowConfetti(true);
         setTimeout(() => {
@@ -33,9 +40,28 @@ const Preview = ({
         }, 3000);
     }, []);
 
-   
 
-    
+
+    const { mutate } = useMutation({
+        mutationKey: ['get-paymant-session'],
+        mutationFn: processOrder,
+        onSuccess: ({ url }) => {
+            if (url) {
+                setProcessing(false);
+                router.push(url);
+            }
+            else {
+                setProcessing(false);
+                throw new Error('payment url not found.');
+            };
+        },
+        onError(error, variables, context) {
+            setProcessing(false);
+            throw new Error("payment Error: ", error);
+        },
+    })
+
+
 
     const config = {
         angle: 90,
@@ -140,7 +166,21 @@ const Preview = ({
                             </div>
                         </div>
                         <div className="w-full flex items-center justify-end mt-16">
-                            <Button>
+                            <Button
+                                onClick={() => {
+                                    setProcessing(true);
+                                    mutate({ configId });
+                                }}
+                                isLoading={processing}
+                                disabled={processing}
+                                loadingChildren={
+                                    <>
+                                        <span className="relative flex items-center justify-center gap-2">
+                                            <DotLoading width={70} height={70} className="" />
+                                        </span>
+                                    </>
+                                }
+                            >
                                 Check out
                                 <ArrowRight
                                     className='w-4 h-4 text-white inline ml-1.5'

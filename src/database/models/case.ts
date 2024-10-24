@@ -1,7 +1,21 @@
-import { COLORS } from "@/validators/option-validator";
-import mongoose, { model, models } from "mongoose";
-import { string } from "zod";
+import mongoose, { model, models, Types } from "mongoose";
 
+export interface ICase extends Document {
+    _id: Types.ObjectId;  // Add the Mongoose ObjectId type for the _id field
+    imageUrl: string;
+    width?: number;
+    height?: number;
+    configured_image?: string;
+    configured_image_width?: number;
+    configured_image_height?: number;
+    color?: string;
+    model?: string;
+    material?: string;
+    finish?: string;
+    casePrice?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+}
 const caseSchema = new mongoose.Schema({
     imageUrl: {
         type: String,
@@ -40,6 +54,8 @@ const caseSchema = new mongoose.Schema({
 }, {
     timestamps: true
 });
+
+
 
 const Case = models.cases || model('cases', caseSchema);
 export default Case;

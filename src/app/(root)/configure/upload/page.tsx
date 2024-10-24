@@ -27,6 +27,11 @@ const DesignPage = () => {
         onUploadProgress(p) {
             setProgress(p);
         },
+        onUploadError(e) {
+            toast({
+                title: "something went wrong. Try again",
+            })
+        },
     });
 
     const handleDropAccept = (acceptedFiles: File[]) => {
