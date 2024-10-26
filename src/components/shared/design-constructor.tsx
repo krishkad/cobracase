@@ -137,7 +137,52 @@ const DesignConstructor = ({
             const file = new File([blob], `filename.png`, { type: 'image/png' });
             // console.log({ file: [file] })
 
-            await startUpload([file], {
+
+
+
+            const canvas2 = document.createElement('canvas');
+            canvas2.width = caseWidth;
+            canvas2.height = caseHeight;
+            const ctx2 = canvas2.getContext("2d");
+
+            const img1 = new Image();
+            const img2 = new Image();
+
+            img1.crossOrigin = 'anonymous';
+            img2.crossOrigin = 'anonymous';
+            img1.src = imageUrl;
+            img2.src = '/phone-template-white-edges.png';
+            await new Promise((resolve) => (img1.onload = resolve))
+            await new Promise((resolve) => (img2.onload = resolve))
+
+
+            ctx2?.drawImage(
+                img1,
+                actualX,
+                actualY,
+                renderedDimension.width,
+                renderedDimension.height,
+
+            )
+
+            ctx2?.drawImage(
+                img2,
+                0,
+                0,
+                caseWidth,
+                caseHeight
+
+            )
+
+            const base642 = canvas2.toDataURL();
+            const base64Data2 = base642.split(',')[1];
+
+            const blob2 = base64ToBlob(base64Data2, 'image/png');
+            // console.log({ blob })
+            const file2 = new File([blob2], `preview.png`, { type: 'image/png' });
+            console.log({ file2 })
+
+            await startUpload([file, file2], {
                 configId,
                 model: options.model.value,
                 color: options.color.value,
@@ -161,6 +206,27 @@ const DesignConstructor = ({
         const byteArray = new Uint8Array(byteNumbers)
         return new Blob([byteArray], { type: mimeType })
     }
+
+
+
+    const drawRoundedImage = (ctx: any, img: HTMLImageElement, x: number, y: number, width: number, height: number, borderRadius: number) => {
+        ctx.beginPath();
+        ctx.moveTo(x + borderRadius, y);
+        ctx.lineTo(x + width - borderRadius, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + borderRadius);
+        ctx.lineTo(x + width, y + height - borderRadius);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - borderRadius, y + height);
+        ctx.lineTo(x + borderRadius, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - borderRadius);
+        ctx.lineTo(x, y + borderRadius);
+        ctx.quadraticCurveTo(x, y, x + borderRadius, y);
+        ctx.closePath();
+
+        ctx.clip(); // Clip to the rounded rectangle path
+        ctx.drawImage(img, x, y, width, height);
+        ctx.restore(); // Restore the context state for the next drawing
+    };
+
 
 
     return (

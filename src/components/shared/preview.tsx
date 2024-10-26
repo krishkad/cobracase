@@ -92,7 +92,7 @@ const Preview = ({
         startVelocity: 30,
         elementCount: 400,
         dragFriction: 0.12,
-        duration: 3000,
+        duration: 4000,
         stagger: 3,
         width: "10px",
         height: "10px",

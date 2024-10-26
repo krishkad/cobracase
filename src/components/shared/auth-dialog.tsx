@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
     Dialog,
     DialogContent,
@@ -7,7 +7,7 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import { Check } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
@@ -16,8 +16,8 @@ const AuthDialog = ({
     setAuthDialog,
     id
 }: {
-    authDialog: boolean,
-    setAuthDialog: React.Dispatch<React.SetStateAction<boolean>>,
+    authDialog: boolean
+    setAuthDialog: React.Dispatch<React.SetStateAction<boolean>>
     id: string
 }) => {
     const router = useRouter();
@@ -48,4 +48,4 @@ const AuthDialog = ({
     )
 }
 
-export default AuthDialog
+export default AuthDialog;

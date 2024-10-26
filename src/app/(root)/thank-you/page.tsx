@@ -7,15 +7,16 @@ interface searchProps {
     }
 }
 
-const ThankYour = ({ searchParams }: searchProps) => {
+const ThankYouPage = ({ searchParams }: searchProps) => {
     const { id } = searchParams
     return (
         <div className='w-full'>
             <MaxWidthWrapper>
-                ThankYour
+                ThankYou for Ordering
+                Your orderId: {id}
             </MaxWidthWrapper>
         </div>
     )
 }
 
-export default ThankYour
+export default ThankYouPage

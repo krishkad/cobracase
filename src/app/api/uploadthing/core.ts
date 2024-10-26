@@ -7,7 +7,7 @@ import Case from "@/database/models/case";
 const f = createUploadthing();
 
 export const ourFileRouter = {
-    imageUploader: f({ image: { maxFileSize: "8MB" } })
+    imageUploader: f({ image: { maxFileSize: "16MB", maxFileCount: 2 } })
         .input(z.object({
             configId: z.string().optional(),
             color: z.string().optional(),
@@ -22,40 +22,56 @@ export const ourFileRouter = {
         })
         .onUploadComplete(async ({ metadata, file }) => {
             const { configId, color, model, material, finish, casePrice } = metadata.input;
-            console.log({ 'uploadthing-url': file.url })
-            
+            // console.log({ 'uploadthing-url': file.url })
+            // const [image1, image2] = file;
             const res = await fetch(file.url);
+            console.log({ file })
 
             const buffer = await res.arrayBuffer();
             const ImgMetaData = await sharp(buffer).metadata();
-            
+
             const { width, height } = ImgMetaData;
             if (!configId) {
                 await ConnectToDatabase();
-                
+
                 const createImage = await Case.create({
                     imageUrl: file.url,
                     width: width || 500,
                     height: height || 500
                 })
-                
+
                 return { configId: createImage._id };
             } else {
                 console.log({ configId, color, model, material, finish, casePrice })
                 await ConnectToDatabase();
-                
-                const updatedImage = await Case.findByIdAndUpdate(configId, {
-                    configured_image: file.url,
-                    configured_image_width: width,
-                    configured_image_height: height,
-                    color,
-                    model,
-                    material,
-                    finish,
-                    casePrice
-                });
-                console.log({ case: updatedImage })
-                return { configId: updatedImage._id };
+
+                const isPreview = file.name === 'preview.png'
+                console.log({ name: file.name, isPreview })
+                if (isPreview) {
+                    const updatedImage = await Case.findByIdAndUpdate(configId, {
+                        preview_image: file.url,
+
+                    });
+
+                    console.log({ case: updatedImage })
+                    return { configId: updatedImage._id };
+                } else {
+                    const updatedImage = await Case.findByIdAndUpdate(configId, {
+                        configured_image: file.url,
+                        configured_image_width: width,
+                        configured_image_height: height,
+                        color,
+                        model,
+                        material,
+                        finish,
+                        casePrice
+                    });
+                    console.log({ case: updatedImage })
+                    return { configId: updatedImage._id };
+                }
+
+
+
             }
         }),
 } satisfies FileRouter;

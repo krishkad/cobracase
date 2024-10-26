@@ -8,6 +8,7 @@ export interface ICase extends Document {
     configured_image?: string;
     configured_image_width?: number;
     configured_image_height?: number;
+    preview_image?: string,
     color?: string;
     model?: string;
     material?: string;
@@ -29,6 +30,9 @@ const caseSchema = new mongoose.Schema({
     },
     configured_image: {
         type: String,
+    },
+    preview_image: {
+        type: String
     },
     configured_image_width: {
         type: Number,
