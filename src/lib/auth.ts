@@ -21,7 +21,8 @@ export const options: NextAuthOptions = {
 
                 if (!isExistingUser) {
                     await User.create({
-                        email: profile.email
+                        email: profile.email,
+                        signUpOrigin: "github"
                     })
                 }
 
@@ -40,7 +41,8 @@ export const options: NextAuthOptions = {
 
                 if (!isExistingUser) {
                     await User.create({
-                        email: profile.email
+                        email: profile.email,
+                        signUpOrigin: "google"
                     })
                 }
 
@@ -89,6 +91,7 @@ export const options: NextAuthOptions = {
                             email: credentials.email,
                             password: hashedPassword,
                             name: credentials.name,
+                            signUpOrigin: "cobracase"
                         });
 
                         return newUser; // Return new user after creation

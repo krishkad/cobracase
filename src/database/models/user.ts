@@ -3,14 +3,18 @@ import mongoose, { model, models } from "mongoose";
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
+        default: "user"
     },
     email: {
         type: String,
         required: true,
-        unique: true
     },
     password: {
         type: String,
+    },
+    signUpOrigin: {
+        type: String,
+        enum: ["github", "google", "cobracase"]
     }
 }, {
     timestamps: true
