@@ -33,16 +33,16 @@ export const options: NextAuthOptions = {
         GoogleProvider({
             async profile(profile) {
                 // Specify the type for GitHub's profile data
-                await ConnectToDatabase();
+                // await ConnectToDatabase();
 
 
-                const isExistingUser = await User.findOne({ email: profile?.email });
+                // const isExistingUser = await User.findOne({ email: profile.email });
 
-                if (!isExistingUser) {
-                    await User.create({
-                        email: profile.email
-                    })
-                }
+                // if (!isExistingUser) {
+                //     await User.create({
+                //         email: profile.email
+                //     })
+                // }
 
                 return profile
             },
