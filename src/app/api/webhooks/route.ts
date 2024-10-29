@@ -3,10 +3,10 @@ import Order from '@/database/models/order';
 import { stripe } from '@/lib/stripe';
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
+// import { Resend } from 'resend';
 import Stripe from 'stripe';
 
-const resend = new Resend(process.env.STRIPE_WEBHOOKS_SECRET!);
+// const resend = new Resend(process.env.STRIPE_WEBHOOKS_SECRET!);
 
 export async function POST(req: Request) {
     try {
