@@ -20,13 +20,14 @@ export const options: NextAuthOptions = {
                 const isExistingUser = await User.findOne({ email: profile?.email });
 
                 if (!isExistingUser) {
-                    await User.create({
+                    const newUser = await User.create({
                         email: profile.email,
                         signUpOrigin: "github"
-                    })
-                }
+                    });
+                    return newUser;
+                };
 
-                return profile
+                return isExistingUser;
             },
             clientId: process.env.GITHUB_CLIENT_ID! as string,
             clientSecret: process.env.GITHUB_CLIENT_SECRET! as string,
@@ -40,13 +41,14 @@ export const options: NextAuthOptions = {
                 const isExistingUser = await User.findOne({ email: profile.email });
 
                 if (!isExistingUser) {
-                    await User.create({
+                    const newUser = await User.create({
                         email: profile.email,
                         signUpOrigin: "google"
                     })
+                    return newUser
                 }
 
-                return profile
+                return isExistingUser
             },
             clientId: process.env.GOOGLE_CLIENT_ID! as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET! as string,
