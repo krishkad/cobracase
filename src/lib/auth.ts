@@ -31,14 +31,21 @@ export const options: NextAuthOptions = {
             clientSecret: process.env.GITHUB_CLIENT_SECRET! as string,
         }),
         GoogleProvider({
-            // profile(profile) {
-            //     return {
-            //         id: profile.id.toString(),
-            //         name: profile.name || profile.login,
-            //         email: profile.email,
-            //         image: profile.avatar_url,
-            //     }
-            // },
+            async profile(profile) {
+                // Specify the type for GitHub's profile data
+                await ConnectToDatabase();
+
+
+                const isExistingUser = await User.findOne({ email: profile?.email });
+
+                if (!isExistingUser) {
+                    await User.create({
+                        email: profile.email
+                    })
+                }
+
+                return profile
+            },
             clientId: process.env.GOOGLE_CLIENT_ID! as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET! as string,
         }),
