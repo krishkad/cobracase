@@ -19,6 +19,7 @@ export interface IOrder extends Document {
     price: number;
     totalAmount: number;
     shippingAddress?: IShippingAddress;
+    billingAddress?: IShippingAddress;
     paymentStatus: 'Pending' | 'Completed' | 'Failed';
     orderStatus: 'Processing' | 'Shipped' | 'Delivered' | 'Cancelled';
     createdAt?: Date; // Optional, handled by Mongoose timestamps
@@ -50,6 +51,23 @@ const orderSchema = new Schema({
         required: true
     },
     shippingAddress: {
+        street: {
+            type: String,
+        },
+        city: {
+            type: String,
+        },
+        state: {
+            type: String,
+        },
+        postalCode: {
+            type: String,
+        },
+        country: {
+            type: String,
+        }
+    },
+    billingAddress: {
         street: {
             type: String,
         },
