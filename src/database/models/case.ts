@@ -1,7 +1,8 @@
 import mongoose, { model, models, Types } from "mongoose";
 
 export interface ICase extends Document {
-    _id: Types.ObjectId;  // Add the Mongoose ObjectId type for the _id field
+    _id?: Types.ObjectId;  // Add the Mongoose ObjectId type for the _id field
+    id?: Types.ObjectId;  // Add the Mongoose ObjectId type for the _id field
     imageUrl: string;
     width?: number;
     height?: number;

@@ -30,6 +30,7 @@ const DesignPage = () => {
         onUploadError(e) {
             toast({
                 title: "something went wrong. Try again",
+                variant: "destructive"
             })
         },
     });

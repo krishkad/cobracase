@@ -55,8 +55,8 @@ const DesignConstructor = ({
     const caseRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
-    const calculatedWidth = width / 4
-    const calculatedHeight = height / 4
+    const calculatedWidth = width / 7
+    const calculatedHeight = height / 7
 
     const [renderedDimension, SetRenderedDimension] = useState({
         width: calculatedWidth,
@@ -209,23 +209,7 @@ const DesignConstructor = ({
 
 
 
-    const drawRoundedImage = (ctx: any, img: HTMLImageElement, x: number, y: number, width: number, height: number, borderRadius: number) => {
-        ctx.beginPath();
-        ctx.moveTo(x + borderRadius, y);
-        ctx.lineTo(x + width - borderRadius, y);
-        ctx.quadraticCurveTo(x + width, y, x + width, y + borderRadius);
-        ctx.lineTo(x + width, y + height - borderRadius);
-        ctx.quadraticCurveTo(x + width, y + height, x + width - borderRadius, y + height);
-        ctx.lineTo(x + borderRadius, y + height);
-        ctx.quadraticCurveTo(x, y + height, x, y + height - borderRadius);
-        ctx.lineTo(x, y + borderRadius);
-        ctx.quadraticCurveTo(x, y, x + borderRadius, y);
-        ctx.closePath();
 
-        ctx.clip(); // Clip to the rounded rectangle path
-        ctx.drawImage(img, x, y, width, height);
-        ctx.restore(); // Restore the context state for the next drawing
-    };
 
 
 
