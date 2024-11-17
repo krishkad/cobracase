@@ -2,9 +2,17 @@ import React from 'react'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
-const Phone = ({ SrcImg, className }: { SrcImg: string, className?: string }) => {
+interface MyDivProps extends React.HTMLAttributes<HTMLDivElement> {
+    // You can add your custom props here if needed
+    SrcImg: string;
+    className?: string;
+}
+
+
+const Phone = ({ SrcImg, className, ...props }: MyDivProps) => {
+
     return (
-        <div className={cn("relative pointer-events-none select-none z-40 overflow-hidden w-64 rounded-[36px]", className)}>
+        <div className={cn("relative pointer-events-none select-none z-40 overflow-hidden w-64 rounded-[36px]", className)} {...props}>
             <Image
                 width={0}
                 height={0}

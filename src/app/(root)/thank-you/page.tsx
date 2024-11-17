@@ -27,7 +27,10 @@ const ThankYouPage = async ({ searchParams }: searchProps) => {
     return (
         <div className='w-full'>
             <MaxWidthWrapper>
-                <ThankYou imageUrl={configured_case.imageUrl} />
+                <ThankYou
+                    imageUrl={configured_case.configured_image!}
+                    caseBackgroundColor={configured_case.color!}
+                />
             </MaxWidthWrapper>
         </div>
     );

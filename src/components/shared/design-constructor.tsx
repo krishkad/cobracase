@@ -145,6 +145,10 @@ const DesignConstructor = ({
             canvas2.height = caseHeight;
             const ctx2 = canvas2.getContext("2d");
 
+
+            ctx2!.fillStyle = options.color.tw;
+            ctx2!.fillRect(0, 0, canvas2.width, canvas2.height);
+
             const img1 = new Image();
             const img2 = new Image();
 

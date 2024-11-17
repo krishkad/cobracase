@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Phone from './phone';
 import Confetti from 'react-dom-confetti';
 import { cn } from '@/lib/utils';
-import { FINISHES, MATERIALS, MODEL } from '@/validators/option-validator';
+import { COLORS, FINISHES, MATERIALS, MODEL } from '@/validators/option-validator';
 import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '../ui/button';
 import { useMutation } from '@tanstack/react-query';
@@ -104,6 +104,7 @@ const Preview = ({
     const materialInfo = MATERIALS.options.find((mat) => material === mat.value);
     const finishInfo = FINISHES.options.find((fin) => finish === fin.value);
     const totalPrice = casePrice + materialInfo!?.price + finishInfo!?.price;
+    const twColor = COLORS.find((colo) => colo.value === color)
 
     return (
         <>
@@ -116,7 +117,7 @@ const Preview = ({
             <div className="w-full my-8">
                 <div className="w-full grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-5">
                     <div className="w-full row-span-2 flex items-center justify-center">
-                        <Phone SrcImg={imageUrl} className={`bg-${color}`} />
+                        <Phone SrcImg={imageUrl} style={{ backgroundColor: twColor!.tw }} />
                     </div>
                     <div className="w-full row-span-2 col-span-2 mt-5 md:mt-0">
                         <h1 className="text-3xl font-bold text-balance">
